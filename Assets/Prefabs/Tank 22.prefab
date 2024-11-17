@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 1154394133105432436}
   - component: {fileID: 6824200048249521675}
   - component: {fileID: 3755311596334604615}
+  - component: {fileID: 4174531256798687421}
   m_Layer: 6
   m_Name: gun (1)
   m_TagString: Untagged
@@ -225,6 +226,28 @@ MonoBehaviour:
   distancew: 0
   k: 0
   startDokObj: {x: 0, y: 0}
+--- !u!114 &4174531256798687421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905239412739188076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0381a8e6332bfcd4f9f58e3b02006fbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gun: {fileID: 4013796669151078181}
+  i: 0
+  maxDistance: 25
+  dokObj: {fileID: 7460080904757260856}
+  enemy:
+    serializedVersion: 2
+    m_Bits: 640
+  distancew: 0
+  k: 0
+  startDokObj: {x: 0, y: 0}
 --- !u!1 &7182006991534276099
 GameObject:
   m_ObjectHideFlags: 0
@@ -250,7 +273,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5579969549618042485
 Transform:
   m_ObjectHideFlags: 0
@@ -372,6 +395,8 @@ MonoBehaviour:
   mediumRange: 0
   earn: {fileID: 0}
   isHeeling: 1
+  spawnDead: 1
+  isDeadracer: 0
 --- !u!114 &7436426827609773064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -385,13 +410,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  _centerOfMass: {fileID: 5762305718595646353}
-  spriteRenderer: {fileID: 8143742986502336156}
+  _centerOfMass: {fileID: 0}
+  spriteRenderer: {fileID: 0}
   flip: 1
   tank: {fileID: 21300000, guid: 5a9864bea91298a488d306fc096581a7, type: 3}
   fort1: {fileID: 21300000, guid: 0325baec030b6634bbffaf45da51e2c9, type: 3}
   sceneWidth: 20
-  speed: {fileID: 5470521095880236572}
+  speed: {fileID: 0}
   _gravity: -2.5
   maxTiltAngle: 10
   stabilizationTorque: 10
@@ -667,7 +692,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2125900409102039088, guid: 07565aa6669859d4ab54d9aaf86a3825, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.95238096
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 2125900409102039088, guid: 07565aa6669859d4ab54d9aaf86a3825, type: 3}
       propertyPath: m_LocalPosition.x
@@ -713,6 +738,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dok (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5446003308153887592, guid: 07565aa6669859d4ab54d9aaf86a3825, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3340f06e49381404fb46edd0089b4378, type: 3}
     - target: {fileID: 5446003308153887592, guid: 07565aa6669859d4ab54d9aaf86a3825, type: 3}
       propertyPath: m_SortingOrder
       value: 22

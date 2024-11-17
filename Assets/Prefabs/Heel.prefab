@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7358607415708615731}
   m_Layer: 3
   m_Name: Heel
-  m_TagString: Wall
+  m_TagString: Heel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heelCount: 25
-  player: {fileID: 0}
+  rb: {fileID: 0}
 --- !u!212 &168037773765500739
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -50,7 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 40
   moveRight: 1
-  damage: 10
+  damage: 20
   lifeTime: 1
   minAngle: -5
   maxAngle: 5

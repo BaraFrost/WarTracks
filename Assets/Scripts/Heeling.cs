@@ -5,24 +5,48 @@ using UnityEngine;
 public class Heeling : MonoBehaviour
 {
     [SerializeField]
-    private float heelCount;
+    private float heelCount; // Количество лечения
+   
     [SerializeField]
-    private GameObject player;
-    public void OnCollisionEnter2D(Collision2D collision)
+    private Rigidbody2D rb; // Rigidbody объекта
+
+    private bool isStopped = false; // Флаг остановки объекта
+
+    private void Start()
     {
-        
-        if (collision.gameObject.TryGetComponent<EntityHealth>(out var health))
+        if (rb == null)
         {
-            health.value += heelCount;
-            Destroy(gameObject);
-            
+            rb = GetComponent<Rigidbody2D>(); // Автоматически находим Rigidbody, если он не задан
         }
-        
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        if (collision.gameObject.TryGetComponent<EntityHealth>(out var health))
+        {
+            // Лечение при столкновении с объектом, который имеет компонент EntityHealth
+            health.value += heelCount;
+            Destroy(gameObject); // Удаляем объект
+        }
+        else if (collision.gameObject.CompareTag("Wall"))
+        {
+            // Остановка объекта при столкновении со стеной
+            StopMovement();
+        }
+    }
+
+    private void StopMovement()
+    {
+        if (!isStopped)
+        {
+            isStopped = true;
+
+            // Останавливаем физическое движение
+            rb.velocity = Vector2.zero;
+            rb.angularVelocity = 0f;
+
+            // Отключаем влияние физики
+            rb.bodyType = RigidbodyType2D.Kinematic;
+        }
     }
 }

@@ -51,9 +51,9 @@ MonoBehaviour:
   speed: 40
   moveRight: 1
   damage: 20
-  lifeTime: 0.75
-  minAngle: -5
-  maxAngle: 5
+  lifeTime: 1.1
+  minAngle: -2
+  maxAngle: 6
   smoke: {fileID: 139366, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
 --- !u!212 &5226337794387512275
 SpriteRenderer:
@@ -122,7 +122,7 @@ Rigidbody2D:
   m_Mass: 0.0001
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2

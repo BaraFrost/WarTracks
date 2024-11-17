@@ -675,7 +675,7 @@ MonoBehaviour:
   shotPosition: {fileID: 6422093500241648792}
   bullet: {fileID: 6026836289258942164, guid: e454b82dce94961498625dc8a22a1f72, type: 3}
   bulletCount: 6
-  reloadTime: 1.25
+  reloadTime: 1.5
   repeatTime: 0.2
   reload: {fileID: 0}
   dmg: 1
@@ -685,7 +685,7 @@ MonoBehaviour:
   nextFireTime: 0
   fireRate: 0
   joystick: {fileID: 0}
-  joystikShootRadius: 0.85
+  joystikShootRadius: 0.825
   drob: 0
   reloadTimer: 0
   shoot: 0
@@ -702,9 +702,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 30
-  rotationRange: {x: -10, y: 50}
-  rotationRanger: {x: 13, y: 73}
-  rotationRangeL: {x: -33, y: 37}
+  rotationRange: {x: -15, y: 30}
+  rotationRanger: {x: 8, y: 53}
+  rotationRangeL: {x: -38, y: 7}
   T: 0
   S: 0
   joystick: {fileID: 0}
@@ -755,15 +755,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gun: {fileID: 5520848121042241575}
-  i: 0
-  maxDistance: 20
   dokObj: {fileID: 1277949293758952779}
+  maxDistance: 20
   enemy:
     serializedVersion: 2
     m_Bits: 640
   distancew: 0
-  k: 0
   startDokObj: {x: 0, y: 0}
+  minDistancew: 9
+  maxDistancew: 16
+  minScale: 0.5
+  maxScale: 2
+  nePopal: 1
 --- !u!1001 &881728284584627579
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -824,6 +827,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dok
       objectReference: {fileID: 0}
+    - target: {fileID: 5446003308153887592, guid: 07565aa6669859d4ab54d9aaf86a3825, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 49f3ab9d3cf0dcd4591b5662d2edee91, type: 3}
     - target: {fileID: 5446003308153887592, guid: 07565aa6669859d4ab54d9aaf86a3825, type: 3}
       propertyPath: m_SortingOrder
       value: 20
