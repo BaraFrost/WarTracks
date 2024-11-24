@@ -868,18 +868,18 @@ PrefabInstance:
     - target: {fileID: 7176937189201820040, guid: f5ada91d220d7d34c8086c16888bc87b, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 3fcd8e5c85a4dda469f38de8cc6ba046, type: 3}
+      objectReference: {fileID: 21300000, guid: fa380089bea5fc740845c91efab24ece, type: 3}
     - target: {fileID: 7176937189201820040, guid: f5ada91d220d7d34c8086c16888bc87b, type: 3}
       propertyPath: m_Color.b
-      value: 0.41509432
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7176937189201820040, guid: f5ada91d220d7d34c8086c16888bc87b, type: 3}
       propertyPath: m_Color.g
-      value: 0.41509432
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7176937189201820040, guid: f5ada91d220d7d34c8086c16888bc87b, type: 3}
       propertyPath: m_Color.r
-      value: 0.41509432
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8132126144923507790, guid: f5ada91d220d7d34c8086c16888bc87b, type: 3}
       propertyPath: m_Colors.m_PressedColor.b
@@ -1306,7 +1306,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c90c2d8a4e5781641866079fec84ef31, type: 3}
+  m_Sprite: {fileID: 21300000, guid: aa3627335e0fa1147970bef8c58dfdc1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

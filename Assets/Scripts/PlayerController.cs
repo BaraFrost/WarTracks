@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
     private Collider2D collider2;
     [SerializeField]
     private int startSpeed;
- 
+    private bool keyboardInputStarted;
 
     // Второй коллайдер
 
@@ -72,14 +72,22 @@ public class PlayerController : MonoBehaviour
             {
                 flip = false;
             }
-        }
+            keyboardInputStarted = true;
+
+}
         else if (Input.GetKey("d"))
         {
-            movementX = 1;
+           movementX = 1;
             if (flip == false)
             {
                 flip = true;
             }
+            keyboardInputStarted = true;
+        }
+        else if(keyboardInputStarted)
+        {
+            movementX = 0;
+            keyboardInputStarted = false;
         }
         
     }

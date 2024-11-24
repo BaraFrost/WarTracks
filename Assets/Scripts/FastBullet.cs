@@ -17,6 +17,11 @@ public class FastBullet : MonoBehaviour
     [SerializeField]
     private GameObject smoke;
 
+    [SerializeField]
+    private AudioClip wallSound;
+    [SerializeField]
+    private AudioClip healthSound;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -30,6 +35,7 @@ public class FastBullet : MonoBehaviour
     {
         if (collision.gameObject.tag == "Wall")
         {
+            PlaySound(wallSound);
             Destroy(gameObject);
             Instantiate(smoke, transform.position, transform.rotation);
         }
@@ -39,7 +45,7 @@ public class FastBullet : MonoBehaviour
 
             health.value = health.value - damage;
 
-
+            PlaySound(healthSound);
             Destroy(gameObject);
             Instantiate(smoke, transform.position, transform.rotation);
 
@@ -54,5 +60,23 @@ public class FastBullet : MonoBehaviour
             Destroy(gameObject);
         }
 
+    }
+
+    private void PlaySound(AudioClip clip)
+    {
+        if (clip == null) return;
+
+        // Создаём временный объект для звука
+        GameObject tempSoundObject = new GameObject("TempAudio");
+        AudioSource tempAudioSource = tempSoundObject.AddComponent<AudioSource>();
+
+        // Настраиваем параметры звука
+        tempAudioSource.clip = clip;
+        tempAudioSource.volume = 0.35f; // Настройте громкость
+        tempAudioSource.spatialBlend = 0; // 2D звук
+        tempAudioSource.Play();
+
+        // Уничтожаем объект после воспроизведения звука
+        Destroy(tempSoundObject, clip.length);
     }
 }

@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -50,11 +50,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 40
   moveRight: 1
-  damage: 20
+  damage: 10
   lifeTime: 1
   minAngle: -5
   maxAngle: 5
   smoke: {fileID: 139366, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
+  wallSound: {fileID: 8300000, guid: 0f506a096c200634a9923f43b09970aa, type: 3}
+  healthSound: {fileID: 8300000, guid: f9882871523a9d74fad4d228b3256003, type: 3}
 --- !u!212 &5226337794387512275
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -32,6 +32,11 @@ public class EnemyFastShoot : MonoBehaviour
     [SerializeField]
     private float lifeTime;
 
+    [SerializeField]
+    private AudioClip shootSound;
+    [SerializeField]
+    private AudioSource audioSource;
+
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -40,6 +45,7 @@ public class EnemyFastShoot : MonoBehaviour
         //Bullet.minAngle = minAngle;
         //Bullet.maxAngle = maxAngle;
         //Bullet.lifeTime = lifeTime;
+        audioSource = GetComponent<AudioSource>();
     }
     void Update()
     {
@@ -62,6 +68,7 @@ public class EnemyFastShoot : MonoBehaviour
                 if (nextFireTime <= 0)
                 {
                     Instantiate(bullet, shotPosition.transform.position, transform.rotation);
+                    audioSource.PlayOneShot(shootSound);
                     nextFireTime = fireRate;
                 }
             }

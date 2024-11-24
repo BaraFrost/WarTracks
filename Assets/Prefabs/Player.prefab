@@ -225,6 +225,8 @@ MonoBehaviour:
   isHeeling: 1
   spawnDead: 1
   isDeadracer: 0
+  shootSound: {fileID: 8300000, guid: 0f506a096c200634a9923f43b09970aa, type: 3}
+  audioSource: {fileID: 0}
 --- !u!114 &6172897548151835515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -506,6 +508,7 @@ GameObject:
   - component: {fileID: 7636041549373438231}
   - component: {fileID: 2185190577541737291}
   - component: {fileID: 29651115791894739}
+  - component: {fileID: 4269027385362268820}
   m_Layer: 6
   m_Name: gun
   m_TagString: Untagged
@@ -543,15 +546,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gun: {fileID: 7016137108439781452}
-  i: 0
-  maxDistance: 20
   dokObj: {fileID: 8165721810508740424}
+  maxDistance: 20
   enemy:
     serializedVersion: 2
     m_Bits: 640
   distancew: 0
-  k: 0
   startDokObj: {x: 0, y: 0}
+  minDistancew: 9
+  maxDistancew: 20
+  minScale: 1
+  maxScale: 4
+  nePopal: 1
 --- !u!212 &8683437453725992420
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -629,10 +635,12 @@ MonoBehaviour:
   nextFireTime: 0
   fireRate: 0
   joystick: {fileID: 0}
-  joystikShootRadius: 0.85
+  joystikShootRadius: 0.825
   drob: 0
   reloadTimer: 0
   shoot: 0
+  shootSound: {fileID: 8300000, guid: d91536fa461ac214c91b46be82d7a35e, type: 3}
+  audioSource: {fileID: 0}
 --- !u!114 &2185190577541737291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -647,8 +655,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 30
   rotationRange: {x: -15, y: 30}
-  rotationRanger: {x: 8, y: 53}
-  rotationRangeL: {x: -38, y: 7}
+  rotationRanger: {x: 11, y: 56}
+  rotationRangeL: {x: -41, y: 4}
   T: 0
   S: 0
   joystick: {fileID: 0}
@@ -686,6 +694,102 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!82 &4269027385362268820
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7736926935435492427}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: d91536fa461ac214c91b46be82d7a35e, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.25
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &1581315063389897674
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -774,7 +878,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2125900409102039088, guid: 07565aa6669859d4ab54d9aaf86a3825, type: 3}
       propertyPath: m_LocalScale.x
-      value: 4
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 2125900409102039088, guid: 07565aa6669859d4ab54d9aaf86a3825, type: 3}
       propertyPath: m_LocalScale.y

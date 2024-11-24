@@ -46,17 +46,24 @@ public class PlayerShoot : MonoBehaviour
     private float reloadTimer;
     [SerializeField]
     private bool shoot;
+
+    [SerializeField]
+    private AudioClip shootSound;
+    [SerializeField]
+    private AudioSource audioSource;
     void Start()
     {
         StartCoroutine(Shoot());
-        damage= GetComponent<Bullet>();
-        minAngle=GetComponent<Bullet>();
+        damage = GetComponent<Bullet>();
+        minAngle =GetComponent<Bullet>();
         maxAngle = GetComponent<Bullet>();
         lifeTime = GetComponent<Bullet>();
         //dmg = Bullet.damage;
         nextFireTime = fireRate;
         reloadTimer = reloadTime;
         reload.fillAmount = reloadTimer / reloadTime;
+
+        audioSource = GetComponent<AudioSource>();
     }
     private void Update()
     {
@@ -116,12 +123,17 @@ public class PlayerShoot : MonoBehaviour
                     if (drob == true)
                     {
                     Instantiate(bullet, shotPosition.transform.position, transform.rotation);
-                    Instantiate(bullet, shotPosition.transform.position, transform.rotation);
-                    Instantiate(bullet, shotPosition.transform.position, transform.rotation);
-                    Instantiate(bullet, shotPosition.transform.position, transform.rotation);
-                    
+                        audioSource.PlayOneShot(shootSound);
+                        Instantiate(bullet, shotPosition.transform.position, transform.rotation);
+                        audioSource.PlayOneShot(shootSound);
+                        Instantiate(bullet, shotPosition.transform.position, transform.rotation);
+                        audioSource.PlayOneShot(shootSound);
+                        Instantiate(bullet, shotPosition.transform.position, transform.rotation);
+                        audioSource.PlayOneShot(shootSound);
+
                     }
                     Instantiate(bullet, shotPosition.transform.position, transform.rotation);
+                    audioSource.PlayOneShot(shootSound);
                     yield return new WaitForSeconds(repeatTime);
                     shoot = true;
                     reloadTimer = reloadTime;

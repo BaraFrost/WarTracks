@@ -24,6 +24,9 @@ public class RadioController : MonoBehaviour
     private Image radioHealth;
     [SerializeField]
     private float startTimer;
+
+    [SerializeField]
+    private AudioClip instantiateDerejabl;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -40,6 +43,7 @@ public class RadioController : MonoBehaviour
             timer-=Time.deltaTime;
             if(timer<=0)
             {
+                PlaySound(instantiateDerejabl);
                 Instantiate(derejabl, spawnPoint.transform.position, transform.rotation);
                 timer = startTimer;
 
@@ -49,5 +53,23 @@ public class RadioController : MonoBehaviour
             
         }
       
+    }
+
+    private void PlaySound(AudioClip clip)
+    {
+        if (clip == null) return;
+
+        // Создаём временный объект для звука
+        GameObject tempSoundObject = new GameObject("TempAudio");
+        AudioSource tempAudioSource = tempSoundObject.AddComponent<AudioSource>();
+
+        // Настраиваем параметры звука
+        tempAudioSource.clip = clip;
+        tempAudioSource.volume = 0.35f; // Настройте громкость
+        tempAudioSource.spatialBlend = 0; // 2D звук
+        tempAudioSource.Play();
+
+        // Уничтожаем объект после воспроизведения звука
+        Destroy(tempSoundObject, clip.length);
     }
 }

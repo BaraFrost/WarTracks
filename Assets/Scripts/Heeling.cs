@@ -12,21 +12,41 @@ public class Heeling : MonoBehaviour
 
     private bool isStopped = false; // Флаг остановки объекта
 
+    [SerializeField]
+    private AudioClip shootSound;
+    [SerializeField]
+    private AudioSource audioSource;
     private void Start()
     {
         if (rb == null)
         {
             rb = GetComponent<Rigidbody2D>(); // Автоматически находим Rigidbody, если он не задан
         }
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.TryGetComponent<EntityHealth>(out var health))
         {
-            // Лечение при столкновении с объектом, который имеет компонент EntityHealth
             health.value += heelCount;
-            Destroy(gameObject); // Удаляем объект
+
+            // Создаём временный объект для звука
+            GameObject tempSoundObject = new GameObject("TempAudio");
+            AudioSource tempAudioSource = tempSoundObject.AddComponent<AudioSource>();
+
+            // Настраиваем звук
+            tempAudioSource.clip = shootSound;
+            tempAudioSource.volume = 0.05f; // Установите нужную громкость (например, 50%)
+            tempAudioSource.pitch = 1.0f;  // Установите нужный тон
+            tempAudioSource.spatialBlend = 0; // Для 2D-звука (если требуется)
+            tempAudioSource.Play();
+
+            // Уничтожаем временный объект после завершения воспроизведения звука
+            Destroy(tempSoundObject, shootSound.length);
+
+            // Уничтожаем основной объект
+            Destroy(gameObject);
         }
         else if (collision.gameObject.CompareTag("Wall"))
         {

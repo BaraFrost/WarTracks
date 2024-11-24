@@ -30,7 +30,7 @@ public class NextLevel : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
 
-            Application.LoadLevel(nextSceneNumber);
+            SceneManager.LoadScene(nextSceneNumber);
           
 
         }

@@ -35,10 +35,15 @@ public class EntityHealth : MonoBehaviour
     private bool spawnDead = true;
     [SerializeField]
     private bool isDeadracer = false;
+
+    [SerializeField]
+    private AudioClip shootSound;
+    [SerializeField]
+    private AudioSource audioSource;
     void Start()
     {
         spawnRange = Random.Range(1, maxRange);
-        
+        audioSource = GetComponent<AudioSource>();
     }
     void Update()
     {
@@ -59,6 +64,9 @@ public class EntityHealth : MonoBehaviour
                    // Debug.Log("ELSE");
                     Instantiate(heeling, heelPosition.transform.position, transform.rotation);
                 }
+
+                PlaySoundOnDestroy();
+
                 earn.OnCoinEarn();
                 Destroy(gameObject);
                 
@@ -89,5 +97,20 @@ public class EntityHealth : MonoBehaviour
       Bar.fillAmount = value/maxValue;
       health.text = value.ToString();
 
+    }
+
+    private void PlaySoundOnDestroy()
+    {
+        // Создаём временный объект для звука
+        GameObject tempSoundObject = new GameObject("TempSound");
+        AudioSource tempAudioSource = tempSoundObject.AddComponent<AudioSource>();
+
+        tempAudioSource.clip = shootSound;
+        tempAudioSource.volume = audioSource.volume; // Устанавливаем ту же громкость, что и у основного объекта
+        tempAudioSource.pitch = audioSource.pitch;   // Устанавливаем тот же тон
+        tempAudioSource.Play();
+
+        // Удаляем временный объект после завершения звука
+        Destroy(tempSoundObject, shootSound.length);
     }
 }

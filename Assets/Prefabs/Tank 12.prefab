@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55c7eda61c658164ab6cd2a8c2b11526, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 8
+  value: 10
   normValue: 0
 --- !u!114 &7851786197692883325
 MonoBehaviour:
@@ -151,6 +151,8 @@ MonoBehaviour:
   isHeeling: 1
   spawnDead: 1
   isDeadracer: 0
+  shootSound: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!114 &8748347747781174690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -689,6 +691,8 @@ MonoBehaviour:
   drob: 0
   reloadTimer: 0
   shoot: 0
+  shootSound: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!114 &4390888162772550895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -702,9 +706,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 30
-  rotationRange: {x: -15, y: 30}
-  rotationRanger: {x: 8, y: 53}
-  rotationRangeL: {x: -38, y: 7}
+  rotationRange: {x: -20, y: 45}
+  rotationRanger: {x: 6, y: 71}
+  rotationRangeL: {x: -46, y: 19}
   T: 0
   S: 0
   joystick: {fileID: 0}
