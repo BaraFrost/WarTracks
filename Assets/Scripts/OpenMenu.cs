@@ -14,7 +14,9 @@ public class OpenMenu : MonoBehaviour
     private NextLevel thLevel;
     [SerializeField]
     private TMP_Text level;
-    
+
+    [SerializeField]
+    private int nextLevel;
 
     public void Start()
     {
@@ -57,9 +59,21 @@ public class OpenMenu : MonoBehaviour
     }
     public void OnPlayButtonDown() 
     {
-        var activeSceneIndex = PlayerPrefs.GetInt("SavedLevel");
-        SceneManager.LoadScene(activeSceneIndex);
-        //value.CoinValue();
-        Debug.Log(activeSceneIndex);
+        nextLevel = PlayerPrefs.GetInt("NextLevel");
+        if (nextLevel == 1)
+        {
+            var nextSceneIndex = PlayerPrefs.GetInt("SavedLevel") + 1;
+            SceneManager.LoadScene(nextSceneIndex);
+            nextLevel = 0;
+            PlayerPrefs.SetInt("NextLevel", nextLevel);
+            PlayerPrefs.Save();
+        }
+        else
+        {
+            var activeSceneIndex = PlayerPrefs.GetInt("SavedLevel");
+            SceneManager.LoadScene(activeSceneIndex);
+            
+        }
+        
     }
 }

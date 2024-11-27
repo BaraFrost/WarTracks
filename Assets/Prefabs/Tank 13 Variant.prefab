@@ -106,7 +106,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3219257553417932613, guid: f2a17cb0be6c2844a94cf2eb025d78fe, type: 3}
       propertyPath: value
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 3471059090065225352, guid: f2a17cb0be6c2844a94cf2eb025d78fe, type: 3}
       propertyPath: m_Offset.x
@@ -198,7 +198,7 @@ PrefabInstance:
       objectReference: {fileID: 6026836289258942164, guid: 13551c23986206748be0eae6043cea7f, type: 3}
     - target: {fileID: 5130081570639205619, guid: f2a17cb0be6c2844a94cf2eb025d78fe, type: 3}
       propertyPath: reloadTime
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5130081570639205619, guid: f2a17cb0be6c2844a94cf2eb025d78fe, type: 3}
       propertyPath: repeatTime
@@ -212,13 +212,17 @@ PrefabInstance:
       propertyPath: bulletCount
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5130081570639205619, guid: f2a17cb0be6c2844a94cf2eb025d78fe, type: 3}
+      propertyPath: joystikShootRadius
+      value: 0.75
+      objectReference: {fileID: 0}
     - target: {fileID: 5520848121042241575, guid: f2a17cb0be6c2844a94cf2eb025d78fe, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 5520848121042241575, guid: f2a17cb0be6c2844a94cf2eb025d78fe, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.1226
+      value: 0.1248
       objectReference: {fileID: 0}
     - target: {fileID: 5520848121042241575, guid: f2a17cb0be6c2844a94cf2eb025d78fe, type: 3}
       propertyPath: m_LocalPosition.y
@@ -240,18 +244,30 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 6023714202878151776, guid: f2a17cb0be6c2844a94cf2eb025d78fe, type: 3}
+      propertyPath: m_GravityScale
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6422093500241648792, guid: f2a17cb0be6c2844a94cf2eb025d78fe, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.105
+      value: 0.1016
+      objectReference: {fileID: 0}
+    - target: {fileID: 6422093500241648792, guid: f2a17cb0be6c2844a94cf2eb025d78fe, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0013
       objectReference: {fileID: 0}
     - target: {fileID: 7851786197692883325, guid: f2a17cb0be6c2844a94cf2eb025d78fe, type: 3}
       propertyPath: value
-      value: 20
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 7851786197692883325, guid: f2a17cb0be6c2844a94cf2eb025d78fe, type: 3}
       propertyPath: maxValue
-      value: 20
+      value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 7851786197692883325, guid: f2a17cb0be6c2844a94cf2eb025d78fe, type: 3}
+      propertyPath: shootSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 0f506a096c200634a9923f43b09970aa, type: 3}
     - target: {fileID: 8480387327085768101, guid: f2a17cb0be6c2844a94cf2eb025d78fe, type: 3}
       propertyPath: m_Sprite
       value: 

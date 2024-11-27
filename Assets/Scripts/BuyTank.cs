@@ -23,9 +23,18 @@ public class BuyTank : MonoBehaviour
     [SerializeField]
     private GameObject value22Tank;
     [SerializeField]
+    private GameObject value13Tank;
+    [SerializeField]
+    private GameObject value23Tank;
+
+    [SerializeField]
     private GameObject value12TankImage;
     [SerializeField]
     private GameObject value22TankImage;
+    [SerializeField]
+    private GameObject value13TankImage;
+    [SerializeField]
+    private GameObject value23TankImage;
     [SerializeField]
     private int price12;
     [SerializeField]
@@ -192,6 +201,16 @@ public class BuyTank : MonoBehaviour
         {
             value22Tank.SetActive(false);
             value22TankImage.SetActive(false);
+        }
+        if (tank13Bue == 1)
+        {
+            value13Tank.SetActive(false);
+            value13TankImage.SetActive(false);
+        }
+        if (tank23Bue == 1)
+        {
+            value23Tank.SetActive(false);
+            value23TankImage.SetActive(false);
         }
     }
     // Update is called once per frame

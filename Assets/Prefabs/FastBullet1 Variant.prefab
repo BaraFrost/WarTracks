@@ -26,11 +26,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4556880147752490661, guid: 8c0ee0d6a4fb16c45930d0259bd896cc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.921
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4556880147752490661, guid: 8c0ee0d6a4fb16c45930d0259bd896cc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 20.418
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4556880147752490661, guid: 8c0ee0d6a4fb16c45930d0259bd896cc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -118,7 +118,7 @@ MonoBehaviour:
   wallSound: {fileID: 8300000, guid: 0f506a096c200634a9923f43b09970aa, type: 3}
   healthSound: {fileID: 8300000, guid: f9882871523a9d74fad4d228b3256003, type: 3}
   lineRenderer: {fileID: 5711137186777088693}
-  maxPoints: 10
+  maxPoints: 3
   pointSpacing: 0.1
 --- !u!120 &5711137186777088693
 LineRenderer:

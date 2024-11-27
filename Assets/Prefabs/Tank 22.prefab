@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 6824200048249521675}
   - component: {fileID: 3755311596334604615}
   - component: {fileID: 4174531256798687421}
+  - component: {fileID: 8131980222701587137}
   m_Layer: 6
   m_Name: gun (1)
   m_TagString: Untagged
@@ -62,7 +63,7 @@ Transform:
   m_GameObject: {fileID: 1905239412739188076}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.197, y: 0.074, z: 0}
+  m_LocalPosition: {x: 0.17, y: 0.08, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -137,7 +138,7 @@ MonoBehaviour:
   shotPosition: {fileID: 5255914193088573756}
   bullet: {fileID: 259732439777441520, guid: fc8df6879d63a7a469dc7f742f64a013, type: 3}
   bulletCount: 1
-  reloadTime: 2
+  reloadTime: 2.5
   repeatTime: 0.1
   reload: {fileID: 0}
   dmg: 1
@@ -147,7 +148,7 @@ MonoBehaviour:
   nextFireTime: 0
   fireRate: 0
   joystick: {fileID: 0}
-  joystikShootRadius: 0.85
+  joystikShootRadius: 0.75
   drob: 0
   reloadTimer: 0
   shoot: 0
@@ -227,7 +228,7 @@ MonoBehaviour:
   distancew: 0
   startDokObj: {x: 0, y: 0}
   minDistancew: 1
-  maxDistancew: 10
+  maxDistancew: 25
   minScale: 0.5
   maxScale: 1
   nePopal: 1
@@ -238,7 +239,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1905239412739188076}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0381a8e6332bfcd4f9f58e3b02006fbc, type: 3}
   m_Name: 
@@ -253,6 +254,31 @@ MonoBehaviour:
   startDokObj: {x: 0, y: 0}
   minDistancew: 1
   maxDistancew: 25
+  minScale: 0.5
+  maxScale: 2
+  nePopal: 1
+--- !u!114 &8131980222701587137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905239412739188076}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0381a8e6332bfcd4f9f58e3b02006fbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gun: {fileID: 4013796669151078181}
+  dokObj: {fileID: 7460080904757260856}
+  maxDistance: 25
+  enemy:
+    serializedVersion: 2
+    m_Bits: 640
+  distancew: 0
+  startDokObj: {x: 0, y: 0}
+  minDistancew: 1
+  maxDistancew: 10
   minScale: 0.5
   maxScale: 2
   nePopal: 1
@@ -376,7 +402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55c7eda61c658164ab6cd2a8c2b11526, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 3
+  value: 4
   normValue: 0
 --- !u!114 &4683205923190455598
 MonoBehaviour:
@@ -494,7 +520,7 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.36, y: -0.08}
+  m_Offset: {x: 0.32, y: -0.08}
   serializedVersion: 2
   m_Radius: 0.11
 --- !u!61 &2960204102485433967
@@ -529,7 +555,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.07257286, y: 0.064978555}
+  m_Offset: {x: 0.043072857, y: 0.064978555}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -540,7 +566,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.41976058, y: 0.23426613}
+  m_Size: {x: 0.42547774, y: 0.23426613}
   m_EdgeRadius: 0
 --- !u!61 &2011003327733546289
 BoxCollider2D:
@@ -574,7 +600,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.017920732, y: -0.04858899}
+  m_Offset: {x: -0.014294744, y: -0.055039857}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -585,7 +611,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.69031036, y: 0.2739833}
+  m_Size: {x: 0.6725502, y: 0.26098245}
   m_EdgeRadius: 0
 --- !u!58 &2322716558199193385
 CircleCollider2D:
@@ -619,7 +645,7 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.37, y: -0.08}
+  m_Offset: {x: -0.34, y: -0.08}
   serializedVersion: 2
   m_Radius: 0.11
 --- !u!1001 &3791925144894343299
@@ -698,11 +724,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2125900409102039088, guid: 07565aa6669859d4ab54d9aaf86a3825, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5714286
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2125900409102039088, guid: 07565aa6669859d4ab54d9aaf86a3825, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.9
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2125900409102039088, guid: 07565aa6669859d4ab54d9aaf86a3825, type: 3}
       propertyPath: m_LocalPosition.x

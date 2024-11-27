@@ -143,10 +143,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff0a7143659718a45aea352dc8dc04d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 60
+  speed: 50
   moveRight: 1
   damage: 100
-  lifeTime: 0.6
+  lifeTime: 1.5
   minAngle: -3
   maxAngle: 3
   smoke: {fileID: 139366, guid: b185c1a9cf067374586d095111b15bd1, type: 3}

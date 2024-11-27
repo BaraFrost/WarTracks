@@ -30,19 +30,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1154394133105432436, guid: a5ea93b33968a22448a4f4127f26650f, type: 3}
       propertyPath: rotationRanger.y
-      value: 72
+      value: 71
+      objectReference: {fileID: 0}
+    - target: {fileID: 2011003327733546289, guid: a5ea93b33968a22448a4f4127f26650f, type: 3}
+      propertyPath: m_Size.x
+      value: 0.37524462
       objectReference: {fileID: 0}
     - target: {fileID: 2011003327733546289, guid: a5ea93b33968a22448a4f4127f26650f, type: 3}
       propertyPath: m_Size.y
-      value: 0.1821926
+      value: 0.17982873
       objectReference: {fileID: 0}
     - target: {fileID: 2011003327733546289, guid: a5ea93b33968a22448a4f4127f26650f, type: 3}
       propertyPath: m_Offset.x
-      value: -0.012145251
+      value: -0.011635423
       objectReference: {fileID: 0}
     - target: {fileID: 2011003327733546289, guid: a5ea93b33968a22448a4f4127f26650f, type: 3}
       propertyPath: m_Offset.y
-      value: -0.05812779
+      value: -0.05694586
       objectReference: {fileID: 0}
     - target: {fileID: 2011003327733546289, guid: a5ea93b33968a22448a4f4127f26650f, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
@@ -54,7 +58,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2322716558199193385, guid: a5ea93b33968a22448a4f4127f26650f, type: 3}
       propertyPath: m_Radius
-      value: 0.08287436
+      value: 0.08169242
       objectReference: {fileID: 0}
     - target: {fileID: 2322716558199193385, guid: a5ea93b33968a22448a4f4127f26650f, type: 3}
       propertyPath: m_Offset.x
@@ -62,7 +66,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2322716558199193385, guid: a5ea93b33968a22448a4f4127f26650f, type: 3}
       propertyPath: m_Offset.y
-      value: -0.07
+      value: -0.06881807
       objectReference: {fileID: 0}
     - target: {fileID: 2445085973292296171, guid: a5ea93b33968a22448a4f4127f26650f, type: 3}
       propertyPath: bullet
@@ -70,7 +74,7 @@ PrefabInstance:
       objectReference: {fileID: 259732439777441520, guid: ce6463a64cce1d94da1e99ee4f3bc048, type: 3}
     - target: {fileID: 2445085973292296171, guid: a5ea93b33968a22448a4f4127f26650f, type: 3}
       propertyPath: reloadTime
-      value: 3
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2445085973292296171, guid: a5ea93b33968a22448a4f4127f26650f, type: 3}
       propertyPath: repeatTime
@@ -82,7 +86,11 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: d91536fa461ac214c91b46be82d7a35e, type: 3}
     - target: {fileID: 2445085973292296171, guid: a5ea93b33968a22448a4f4127f26650f, type: 3}
       propertyPath: bulletCount
-      value: 3
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2445085973292296171, guid: a5ea93b33968a22448a4f4127f26650f, type: 3}
+      propertyPath: joystikShootRadius
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 2960204102485433967, guid: a5ea93b33968a22448a4f4127f26650f, type: 3}
       propertyPath: m_Size.x
@@ -160,6 +168,10 @@ PrefabInstance:
       propertyPath: maxValue
       value: 150
       objectReference: {fileID: 0}
+    - target: {fileID: 4683205923190455598, guid: a5ea93b33968a22448a4f4127f26650f, type: 3}
+      propertyPath: shootSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 0f506a096c200634a9923f43b09970aa, type: 3}
     - target: {fileID: 5255914193088573756, guid: a5ea93b33968a22448a4f4127f26650f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.4496
@@ -223,6 +235,10 @@ PrefabInstance:
     - target: {fileID: 6190525528994842954, guid: a5ea93b33968a22448a4f4127f26650f, type: 3}
       propertyPath: m_Radius
       value: 0.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 6190525528994842954, guid: a5ea93b33968a22448a4f4127f26650f, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.18
       objectReference: {fileID: 0}
     - target: {fileID: 6190525528994842954, guid: a5ea93b33968a22448a4f4127f26650f, type: 3}
       propertyPath: m_Offset.y

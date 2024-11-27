@@ -125,7 +125,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5581149275496462148
 Transform:
   m_ObjectHideFlags: 0
@@ -525,8 +525,8 @@ Transform:
   m_GameObject: {fileID: 7736926935435492427}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0352, y: 0.0636, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalPosition: {x: 0.022, y: 0.0636, z: 0}
+  m_LocalScale: {x: 1.5, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 163342578218377598}
@@ -555,8 +555,8 @@ MonoBehaviour:
   startDokObj: {x: 0, y: 0}
   minDistancew: 9
   maxDistancew: 20
-  minScale: 1
-  maxScale: 4
+  minScale: 0.5
+  maxScale: 1.5
   nePopal: 1
 --- !u!212 &8683437453725992420
 SpriteRenderer:
@@ -599,7 +599,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 7594a2c9277f9ba42b5882e4446552d4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5ea308cd954be0143aca775a4683dc02, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -635,7 +635,7 @@ MonoBehaviour:
   nextFireTime: 0
   fireRate: 0
   joystick: {fileID: 0}
-  joystikShootRadius: 0.825
+  joystikShootRadius: 0.75
   drob: 0
   reloadTimer: 0
   shoot: 0
@@ -878,11 +878,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2125900409102039088, guid: 07565aa6669859d4ab54d9aaf86a3825, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.5
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 2125900409102039088, guid: 07565aa6669859d4ab54d9aaf86a3825, type: 3}
       propertyPath: m_LocalScale.y
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2125900409102039088, guid: 07565aa6669859d4ab54d9aaf86a3825, type: 3}
       propertyPath: m_LocalPosition.x
@@ -964,7 +964,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8966488499858897343, guid: e785fd5a52c748e47877e733cf53c73d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.2836
+      value: 0.0991
       objectReference: {fileID: 0}
     - target: {fileID: 8966488499858897343, guid: e785fd5a52c748e47877e733cf53c73d, type: 3}
       propertyPath: m_LocalPosition.y

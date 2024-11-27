@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,13 +9,16 @@ public class NextLevel : MonoBehaviour
     
     [SerializeField]
     private int nextSceneNumber;//номер следующей сцены
-    [SerializeField]
-    private bool enter;//узнаем вошли мы в зону или нет
+    public int enter=0;//узнаем вошли мы в зону или нет
     [SerializeField]
     private int thisLevel;//указываем какой по счёту данный уровень
     public static int tLevel;//переменная для ссылки 
     
     public static int sceneIndex;
+    public bool o;
+
+    [SerializeField]
+    private AngarController buy;
 
     public void Start()
     {
@@ -29,9 +33,19 @@ public class NextLevel : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-
-            SceneManager.LoadScene(nextSceneNumber);
-          
+            if (buy.goBuy == 0)
+            {
+                SceneManager.LoadScene(nextSceneNumber);
+            }
+            else if(buy.goBuy == 1)
+            {
+                SceneManager.LoadScene(nextSceneNumber);
+                 o = true;
+            }
+            if (o==true)
+            {
+                SceneManager.LoadScene(6);
+            }
 
         }
 

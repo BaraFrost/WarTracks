@@ -57,6 +57,9 @@ MonoBehaviour:
   smoke: {fileID: 139366, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
   wallSound: {fileID: 8300000, guid: 0f506a096c200634a9923f43b09970aa, type: 3}
   healthSound: {fileID: 8300000, guid: f9882871523a9d74fad4d228b3256003, type: 3}
+  lineRenderer: {fileID: 0}
+  maxPoints: 3
+  pointSpacing: 0.1
 --- !u!212 &5226337794387512275
 SpriteRenderer:
   m_ObjectHideFlags: 0

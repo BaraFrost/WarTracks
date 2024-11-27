@@ -687,7 +687,7 @@ MonoBehaviour:
   nextFireTime: 0
   fireRate: 0
   joystick: {fileID: 0}
-  joystikShootRadius: 0.825
+  joystikShootRadius: 0.75
   drob: 0
   reloadTimer: 0
   shoot: 0
