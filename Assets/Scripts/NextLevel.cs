@@ -19,7 +19,7 @@ public class NextLevel : MonoBehaviour
 
     [SerializeField]
     private AngarController buy;
-
+     
     public void Start()
     {
         var activeSceneIndex = SceneManager.GetActiveScene().buildIndex;
@@ -40,9 +40,9 @@ public class NextLevel : MonoBehaviour
             else if(buy.goBuy == 1)
             {
                 SceneManager.LoadScene(nextSceneNumber);
-                 o = true;
+                  enter = 1;
             }
-            if (o==true)
+            if (enter==1)
             {
                 SceneManager.LoadScene(6);
             }

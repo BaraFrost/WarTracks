@@ -45,7 +45,8 @@ public class AngarController : MonoBehaviour
     {
         coinValue = PlayerPrefs.GetInt("Coin");
 
-        
+        if (nextLevel.enter == 1) // Проверяем, что nextLevel.enter == 1
+        {
             if (tank12Bue == 0 && coinValue >= price12)
             {
                 goBuy = 1;
@@ -58,6 +59,7 @@ public class AngarController : MonoBehaviour
                 PlayerPrefs.SetInt("NextLevel", goBuy);
                 PlayerPrefs.Save();
             }
-        
+
+        }
     }
 }
