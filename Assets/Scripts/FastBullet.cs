@@ -87,6 +87,8 @@ public class FastBullet : MonoBehaviour
             Destroy(gameObject);
         }
 
+        // Обновляем траекторию
+        UpdateTrajectory();
     }
 
     private void PlaySound(AudioClip clip)

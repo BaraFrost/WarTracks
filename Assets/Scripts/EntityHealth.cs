@@ -54,7 +54,7 @@ public class EntityHealth : MonoBehaviour
            {
                 var activeSceneIndex = SceneManager.GetActiveScene().buildIndex;
                 PlayerPrefs.SetInt("SavedLevel", activeSceneIndex);
-                SceneManager.LoadScene(7);
+                SceneManager.LoadScene(8);
            }
            else
            {

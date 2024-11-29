@@ -1500,7 +1500,7 @@ PrefabInstance:
       objectReference: {fileID: 718436308}
     - target: {fileID: 7354200548430202757, guid: d15e7a801125f7f4d8c2dadb348498e1, type: 3}
       propertyPath: coinEarn
-      value: 20
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8434718200838854390, guid: d15e7a801125f7f4d8c2dadb348498e1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2460,6 +2460,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dot
       objectReference: {fileID: 0}
+    - target: {fileID: 8849657963415189658, guid: cf397a3052211fc4ab9c3536de3c487a, type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 1875681675438033744, guid: 8c0ee0d6a4fb16c45930d0259bd896cc, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

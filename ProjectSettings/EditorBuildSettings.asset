@@ -27,6 +27,9 @@ EditorBuildSettings:
     path: Assets/Scenes/6.unity
     guid: 6ab6b3e8db1d5f14abda295225eff13b
   - enabled: 1
+    path: Assets/Scenes/End.unity
+    guid: 9da769397bd8da54f89bb3a22afb6539
+  - enabled: 1
     path: Assets/Scenes/Angar.unity
     guid: 8eeb08facd794294291a6f401baf0438
   - enabled: 1

@@ -21,16 +21,47 @@ public class ArtelleryBullet : MonoBehaviour
     [SerializeField]
     private AudioClip collisionSound;
     private Renderer objectRenderer;
+
+    [SerializeField]
+    private LineRenderer lineRenderer; // Линия для отображения траектории
+    [SerializeField]
+    private int maxPoints = 50; // Максимальное количество точек
+    [SerializeField]
+    private float pointSpacing = 0.1f; // Интервал между точками
+
+    private List<Vector3> trajectoryPoints = new List<Vector3>();
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        float randomAngle = UnityEngine.Random.Range(minAngle, maxAngle);
-        //rb.velocity = (moveRight ? transform.right : Quaternion.AngleAxis(180, Vector3.forward) * transform.right) * speed;
-        Vector3 direction = Quaternion.AngleAxis(randomAngle, Vector3.forward) * transform.right;
-        rb.velocity = direction * speed;
+        
         objectRenderer = GetComponent<Renderer>();
 
+        if (lineRenderer == null)
+        {
+            lineRenderer = gameObject.AddComponent<LineRenderer>();
+        }
+
+        // Настраиваем LineRenderer
+        lineRenderer.positionCount = 0;
+        lineRenderer.startWidth = 0.05f;
+        lineRenderer.endWidth = 0.05f;
+        lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
+        lineRenderer.startColor = Color.yellow;
+        lineRenderer.endColor = Color.red;
+
+        // Задаём начальную скорость снаряда
+        float randomAngle = UnityEngine.Random.Range(minAngle, maxAngle);
+        Vector3 direction = Quaternion.AngleAxis(randomAngle, Vector3.forward) * transform.right;
+        rb.velocity = direction * speed;
+
+        // Добавляем первую точку траектории
+        trajectoryPoints.Add(transform.position);
+        lineRenderer.positionCount = 1;
+        lineRenderer.SetPosition(0, transform.position);
+
     }
+
+    
     public void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Wall")
@@ -61,6 +92,8 @@ public class ArtelleryBullet : MonoBehaviour
 
         Destroy(gameObject); // Уничтожаем объект
         Instantiate(smoke, transform.position, transform.rotation); // Создаём эффект дыма
+
+        
     }
 
     private void PlaySound(AudioClip clip)
@@ -90,6 +123,8 @@ public class ArtelleryBullet : MonoBehaviour
             
         }
         RotateTowardsMovementDirection(rb.velocity);
+        // Обновляем траекторию
+        UpdateTrajectory();
     }
    
     void RotateTowardsMovementDirection(Vector2 movement)
@@ -99,5 +134,24 @@ public class ArtelleryBullet : MonoBehaviour
 
         // Поворачиваем объект по оси Z (в 2D пространстве)
         rb.rotation = angle;
+    }
+
+    private void UpdateTrajectory()
+    {
+        // Добавляем текущую позицию в список точек, если она достаточно далека от предыдущей
+        if (trajectoryPoints.Count == 0 || Vector3.Distance(trajectoryPoints[trajectoryPoints.Count - 1], transform.position) >= pointSpacing)
+        {
+            trajectoryPoints.Add(transform.position);
+
+            // Ограничиваем количество точек
+            if (trajectoryPoints.Count > maxPoints)
+            {
+                trajectoryPoints.RemoveAt(0);
+            }
+
+            // Обновляем LineRenderer
+            lineRenderer.positionCount = trajectoryPoints.Count;
+            lineRenderer.SetPositions(trajectoryPoints.ToArray());
+        }
     }
 }

@@ -152,7 +152,7 @@ MonoBehaviour:
   Bar: {fileID: 0}
   maxValue: 100
   health: {fileID: 0}
-  dead: {fileID: 0}
+  dead: {fileID: 2246607840408974981, guid: 02cf44ee8517e2248a574ae270fe81fc, type: 3}
   spawnRange: 0
   maxRange: 10
   mediumRange: 15
@@ -189,7 +189,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2f5776a42ab81464d8e6a5d7572dc718, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0

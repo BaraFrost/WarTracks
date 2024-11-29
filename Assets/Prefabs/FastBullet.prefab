@@ -110,7 +110,7 @@ MonoBehaviour:
   wallSound: {fileID: 8300000, guid: 0f506a096c200634a9923f43b09970aa, type: 3}
   healthSound: {fileID: 8300000, guid: f9882871523a9d74fad4d228b3256003, type: 3}
   lineRenderer: {fileID: 3254634077715472218}
-  maxPoints: 3
+  maxPoints: 5
   pointSpacing: 0.1
 --- !u!50 &5930129839383282011
 Rigidbody2D:
@@ -239,7 +239,7 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 0.60828614, b: 0, a: 1}
+      key0: {r: 1, g: 1, b: 1, a: 1}
       key1: {r: 1, g: 1, b: 1, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}

@@ -31,7 +31,7 @@ public class OpenMenu : MonoBehaviour
     {
         PlayerPrefs.DeleteAll();
 
-        SceneManager.LoadScene(8);
+        SceneManager.LoadScene(9);
         /*PlayerPrefs.DeleteKey("Coin");
         PlayerPrefs.DeleteKey("12ShadowOff"); 
         PlayerPrefs.DeleteKey("12TankBue");
@@ -54,7 +54,7 @@ public class OpenMenu : MonoBehaviour
     }
     public void OnAngarButtonDown()
     {
-        SceneManager.LoadScene(6);
+        SceneManager.LoadScene(7);
         
     }
     public void OnPlayButtonDown() 
