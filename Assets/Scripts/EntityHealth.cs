@@ -40,6 +40,7 @@ public class EntityHealth : MonoBehaviour
     private AudioClip shootSound;
     [SerializeField]
     private AudioSource audioSource;
+    private bool isTransitioning = false;
     void Start()
     {
         spawnRange = Random.Range(1, maxRange);
@@ -50,18 +51,26 @@ public class EntityHealth : MonoBehaviour
        
         if (value <= 0f)
         {
-           if(gameObject.tag=="Player")
-           {
+            if (gameObject.tag == "Player" && !isTransitioning)
+            {
+                isTransitioning = true;
+                PlaySoundOnDestroy();
+                // Сохранение уровня
                 var activeSceneIndex = SceneManager.GetActiveScene().buildIndex;
                 PlayerPrefs.SetInt("SavedLevel", activeSceneIndex);
-                SceneManager.LoadScene(8);
-           }
-           else
-           {
+
+                // Создание эффекта дыма
+                Instantiate(smoke, transform.position, Quaternion.identity);
                 
-                if(spawnRange>mediumRange && isHeeling==true  )
-                {   
-                   // Debug.Log("ELSE");
+                // Запуск перехода на следующую сцену
+                StartCoroutine(LoadSceneAfterDelay(0.5f)); // 0.5 секунды задержки
+            }
+            else
+            {
+
+                if (spawnRange > mediumRange && isHeeling == true)
+                {
+                    // Debug.Log("ELSE");
                     Instantiate(heeling, heelPosition.transform.position, transform.rotation);
                 }
 
@@ -69,18 +78,18 @@ public class EntityHealth : MonoBehaviour
 
                 earn.OnCoinEarn();
                 Destroy(gameObject);
-                
-                if(spawnDead==true)
+
+                if (spawnDead == true)
                 {
                     Instantiate(dead, transform.position, transform.rotation);
-                    
+
 
                 }
                 if (isDeadracer == true)
                 {
                     Instantiate(smoke, transform.position, transform.rotation);
                     Instantiate(smoke, transform.position, transform.rotation);
-                   
+
 
                 }
                 Instantiate(smoke, transform.position, transform.rotation);
@@ -113,4 +122,10 @@ public class EntityHealth : MonoBehaviour
         // Удаляем временный объект после завершения звука
         Destroy(tempSoundObject, shootSound.length);
     }
-}
+
+        private System.Collections.IEnumerator LoadSceneAfterDelay(float delay)
+        {
+            yield return new WaitForSeconds(delay);
+            SceneManager.LoadScene(8);
+        }
+    }

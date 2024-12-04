@@ -8,7 +8,7 @@ public class DerejablMove : MonoBehaviour
     private EntitySpeed speed;
     [SerializeField]
     private GameObject bombSpawn;
-    [SerializeField] 
+    [SerializeField]
     private GameObject objectToSpawn;
     [SerializeField]
     private float spawnInterval;
@@ -16,8 +16,11 @@ public class DerejablMove : MonoBehaviour
     private float timer;
     [SerializeField]
     private float lifeTime;
+
     void Start()
     {
+        // Установка случайного значения для spawnInterval
+        spawnInterval = Random.Range(0.5f, 2.5f);
         timer = spawnInterval;
     }
 
@@ -29,20 +32,17 @@ public class DerejablMove : MonoBehaviour
 
         transform.position = position;
 
-        
-        timer-=Time.deltaTime;
-        if(timer<=0)
+        timer -= Time.deltaTime;
+        if (timer <= 0)
         {
             Instantiate(objectToSpawn, bombSpawn.transform.position, transform.rotation);
-              timer = spawnInterval;
-
+            timer = spawnInterval;
         }
 
         lifeTime -= Time.deltaTime;
         if (lifeTime <= 0)
         {
             Destroy(gameObject);
-
         }
     }
 }

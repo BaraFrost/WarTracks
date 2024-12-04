@@ -196,7 +196,7 @@ MonoBehaviour:
   distToSpawn: 40
   player: {fileID: 0}
   spawnPoint: {fileID: 8903364879972746820}
-  timer: 7
+  timer: 5
   distanc: 0
   derejabl: {fileID: 3723043158549365378, guid: 0baa02fd6e27b2a4aad8208be6dbbf6b, type: 3}
   derejablSpawn: 0

@@ -10284,6 +10284,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tank 23
       objectReference: {fileID: 0}
+    - target: {fileID: 1842807555016518544, guid: 3c232211cc54201479e72791fbcfba30, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2092507205389664667, guid: 3c232211cc54201479e72791fbcfba30, type: 3}
       propertyPath: targetCollider
       value: 
@@ -11724,39 +11728,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86832f84a0cf34eb9b89129d49b7a15e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startConfig: {fileID: 11400000, guid: f01c6cdd628ff47f0a2bd4e35c04197c, type: 2}
-  crtRenderSettings: {fileID: 11400000, guid: 2d929546960894d169f1999a321e4ff4, type: 2}
-  _runtimeMaterial: {fileID: 0}
-  data:
-    pixelationAmount: 0
-    maxColorChannels:
-      red: 0
-      green: 0
-      blue: 0
-      greyScale: 0
-    dithering4: 0
-    dithering8: 0
-    vignette: 0.142
-    innerCurve: 20
-    monitorCurve: 0
-    monitorInnerSize:
-      width: 0
-      height: 0
-    monitorOutterSize:
-      width: 0.02
-      height: 0.008
-    zoom: 1.23
-    monitorRoundness: 0.2
-    monitorTexture: {fileID: 2800000, guid: a5e897f9f29eb488ba4791cd52d004b5, type: 3}
-    monitorColor: {r: 0.16470589, g: 0.16470589, b: 0.16470589, a: 0.5254902}
-    innerMonitorDarkness: 0.442
-    innerMonitorShine: 0
-    colorScans:
-      greenChannelMultiplier: 0.25
-      redBlueChannelMultiplier: 0.25
-      sizeMultiplier: 0
-    innerMonitorShineRadius: -0.087
-    innerMonitorShineCurve: 10
 --- !u!1001 &8870286333515982757
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11816,6 +11787,10 @@ PrefabInstance:
     - target: {fileID: 7415161649340559190, guid: a5416e7b97249854681e8a6daa7b30db, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7415161649340559190, guid: a5416e7b97249854681e8a6daa7b30db, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7636041549373438231, guid: a5416e7b97249854681e8a6daa7b30db, type: 3}
       propertyPath: reload

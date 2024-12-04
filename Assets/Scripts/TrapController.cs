@@ -20,7 +20,7 @@ public class TrapController : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent<EntitySpeed>(out var speed))
         {
-            speed.value = 1;
+            speed.value = 3;
         }
 
     }

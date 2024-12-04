@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-   
     [SerializeField]
     private float speed;
     private Rigidbody2D rb;
@@ -26,8 +25,7 @@ public class Bullet : MonoBehaviour
     [SerializeField]
     private AudioClip healthSound;
 
-    [SerializeField]
-    private LineRenderer lineRenderer; // Линия для отображения траектории
+  
     [SerializeField]
     private int maxPoints = 50; // Максимальное количество точек
     [SerializeField]
@@ -39,18 +37,7 @@ public class Bullet : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
 
-        if (lineRenderer == null)
-        {
-            lineRenderer = gameObject.AddComponent<LineRenderer>();
-        }
-
-        // Настраиваем LineRenderer
-        lineRenderer.positionCount = 0;
-        lineRenderer.startWidth = 0.05f;
-        lineRenderer.endWidth = 0.05f;
-        lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
-        lineRenderer.startColor = Color.yellow;
-        lineRenderer.endColor = Color.red;
+       
 
         // Задаём начальную скорость снаряда
         float randomAngle = UnityEngine.Random.Range(minAngle, maxAngle);
@@ -59,8 +46,7 @@ public class Bullet : MonoBehaviour
 
         // Добавляем первую точку траектории
         trajectoryPoints.Add(transform.position);
-        lineRenderer.positionCount = 1;
-        lineRenderer.SetPosition(0, transform.position);
+      
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
@@ -90,7 +76,7 @@ public class Bullet : MonoBehaviour
         }
 
         // Обновляем траекторию
-        UpdateTrajectory();
+        // UpdateTrajectory();
     }
 
     private void PlaySound(AudioClip clip)
@@ -111,7 +97,7 @@ public class Bullet : MonoBehaviour
         Destroy(tempSoundObject, clip.length);
     }
 
-    private void UpdateTrajectory()
+    /*private void UpdateTrajectory()
     {
         // Добавляем текущую позицию в список точек, если она достаточно далека от предыдущей
         if (trajectoryPoints.Count == 0 || Vector3.Distance(trajectoryPoints[trajectoryPoints.Count - 1], transform.position) >= pointSpacing)
@@ -128,6 +114,5 @@ public class Bullet : MonoBehaviour
             lineRenderer.positionCount = trajectoryPoints.Count;
             lineRenderer.SetPositions(trajectoryPoints.ToArray());
         }
-    }
-
+    }*/
 }

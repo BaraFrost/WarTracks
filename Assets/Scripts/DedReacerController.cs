@@ -27,8 +27,9 @@ public class DedReacerController : MonoBehaviour
 
                 health.value = health.value - damage;
             }
-            Destroy(gameObject);
+            
             Instantiate(smoke, transform.position, transform.rotation);
+            Destroy(gameObject);
         }
     }
 }

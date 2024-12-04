@@ -210,7 +210,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coin: 0
-  coinEarn: 0
+  coinEarn: 1
   value: {fileID: 0}
 --- !u!82 &2674343145486582793
 AudioSource:
