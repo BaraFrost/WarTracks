@@ -8,6 +8,9 @@ TagManager:
   - Enemy
   - PlayerBullet
   - Heel
+  - Friendly
+  - Piont
+  - dRSpawn
   layers:
   - Default
   - TransparentFX
@@ -21,7 +24,7 @@ TagManager:
   - Enemy
   - Stabilization
   - Dead
-  - 
+  - FriendlyTank
   - 
   - 
   - 

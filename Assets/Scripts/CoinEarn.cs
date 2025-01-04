@@ -9,22 +9,23 @@ public class CoinEarn : MonoBehaviour
     private int coinEarn;
     
     [SerializeField]
-    private CoinCount value;
+    private int coinValues;
     // Start is called before the first frame update
     void Start()
     {
-        value = FindObjectOfType<CoinCount>();
+        coinValues = PlayerPrefs.GetInt("Coin");
     }
 
     public void OnCoinEarn()
     {
-        value.coinValue += coinEarn;
-        coin = value.coinValue;
+       coinValues += coinEarn;
+        PlayerPrefs.SetInt("Coin", coinValues);
+        PlayerPrefs.Save();
     }
 
     // Update is called once per frame
     void Update()
     {
-       
+        coinValues = PlayerPrefs.GetInt("Coin");
     }
 }

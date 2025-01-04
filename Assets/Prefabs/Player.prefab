@@ -31,6 +31,41 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5581149275496462148}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2911585248034814642
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4067647066086809581}
+  m_Layer: 5
+  m_Name: FriendlyTankSpawn
+  m_TagString: dRSpawn
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &4067647066086809581
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2911585248034814642}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.99996126, y: 0.99996126, z: 0.99995995}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5581149275496462148}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.255, y: -0.034}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &5354389256433533206
 GameObject:
   m_ObjectHideFlags: 0
@@ -126,7 +161,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5581149275496462148
 Transform:
   m_ObjectHideFlags: 0
@@ -140,6 +175,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 4067647066086809581}
   - {fileID: 2340429035292737383}
   - {fileID: 8992368369522908871}
   - {fileID: 7016137108439781452}
@@ -172,7 +208,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: 0
-  count: {fileID: 0}
 --- !u!114 &9017886555453887617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,18 +248,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heelPosition: {fileID: 5581149275496462148}
   smoke: {fileID: 6813416509558619124, guid: 3b7f2c753d435d647a80f1f047a113e3, type: 3}
-  heeling: {fileID: 3878785233258721366, guid: 30af4bdcbe1078d469bc4eebf0f05b22, type: 3}
-  value: 60
+  heeling: {fileID: 0}
+  value: 100
   Bar: {fileID: 0}
-  maxValue: 60
+  maxValue: 100
   health: {fileID: 0}
   dead: {fileID: 0}
   spawnRange: 0
   maxRange: 0
   mediumRange: 0
   earn: {fileID: 0}
-  isHeeling: 1
-  spawnDead: 1
+  isHeeling: 0
+  spawnDead: 0
   isDeadracer: 0
   shootSound: {fileID: 8300000, guid: 0f506a096c200634a9923f43b09970aa, type: 3}
   audioSource: {fileID: 0}
@@ -297,9 +332,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 6
-  m_Sprite: {fileID: 21300000, guid: e8fdf451597e06c4aabf75136f422327, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d0b149d76a84dc24fb581652fe1155e4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -367,9 +402,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.2, y: -0.17}
+  m_Offset: {x: 0.15, y: -0.055}
   serializedVersion: 2
-  m_Radius: 0.08
+  m_Radius: 0.1
 --- !u!61 &7934587195086179449
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -402,18 +437,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0028703213, y: -0.15110429}
+  m_Offset: {x: 0.023267567, y: -0.048247345}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.64, y: 0.64}
+    oldSize: {x: 0.51, y: 0.31}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3907382, y: 0.18751833}
+  m_Size: {x: 0.28410733, y: 0.20651238}
   m_EdgeRadius: 0
 --- !u!58 &1735363761
 CircleCollider2D:
@@ -447,9 +482,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.19, y: -0.188}
+  m_Offset: {x: -0.11, y: -0.055}
   serializedVersion: 2
-  m_Radius: 0.06
+  m_Radius: 0.1
 --- !u!61 &162414857957784003
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -482,18 +517,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.07951555, y: 0.029159628}
+  m_Offset: {x: 0.022470295, y: 0.10050988}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.64, y: 0.64}
+    oldSize: {x: 0.51, y: 0.31}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.25713032, y: 0.1948622}
+  m_Size: {x: 0.1770244, y: 0.09081426}
   m_EdgeRadius: 0
 --- !u!82 &1236745477981053672
 AudioSource:
@@ -622,7 +657,7 @@ Transform:
   m_GameObject: {fileID: 7736926935435492427}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.022, y: 0.0636, z: 0}
+  m_LocalPosition: {x: 0.073, y: 0.1, z: 0}
   m_LocalScale: {x: 1.5, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -722,7 +757,7 @@ MonoBehaviour:
   shotPosition: {fileID: 163342578218377598}
   bullet: {fileID: 6026836289258942164, guid: e454b82dce94961498625dc8a22a1f72, type: 3}
   bulletCount: 3
-  reloadTime: 1
+  reloadTime: 1.5
   repeatTime: 0.2
   reload: {fileID: 0}
   dmg: 1

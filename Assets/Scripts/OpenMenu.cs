@@ -18,20 +18,27 @@ public class OpenMenu : MonoBehaviour
     [SerializeField]
     private int nextLevel;
 
-    public void Start()
-    {
-       
-    }
-    public void Update()
-    {
+    private int enLevel;
 
-    }
-    // Start is called before the first frame update
+    private int firstArt;
+    private int firstHeel;
+    private int firstDR;
+
+    
     public void NewGame()
     {
         PlayerPrefs.DeleteAll();
 
-        SceneManager.LoadScene(9);
+        firstArt = 1;
+        firstHeel = 3;
+        firstDR = 2;
+
+        PlayerPrefs.SetInt("Bomb", firstArt);
+        PlayerPrefs.SetInt("DR", firstDR);
+        PlayerPrefs.SetInt("Heel", firstHeel);
+        PlayerPrefs.Save();
+
+        SceneManager.LoadScene(17);
         /*PlayerPrefs.DeleteKey("Coin");
         PlayerPrefs.DeleteKey("12ShadowOff"); 
         PlayerPrefs.DeleteKey("12TankBue");
@@ -49,18 +56,34 @@ public class OpenMenu : MonoBehaviour
     }
     public void OnFirstButtonDown()
     {
+
+        PlayerPrefs.DeleteAll();
         SceneManager.LoadScene(1);
+
         
+    }
+    public void OnFirstLevelButtonDown()
+    {
+        SceneManager.LoadScene(1);
+
     }
     public void OnAngarButtonDown()
     {
-        SceneManager.LoadScene(7);
+        SceneManager.LoadScene(16);
         
     }
     public void OnPlayButtonDown() 
     {
+        enLevel = PlayerPrefs.GetInt("EndLevel");
+        if(enLevel==1)
+        {
+            enLevel = 0;
+            PlayerPrefs.SetInt("EndLevel", enLevel);
+            SceneManager.LoadScene("SavedLevel");
+            PlayerPrefs.Save();
+        }
         nextLevel = PlayerPrefs.GetInt("NextLevel");
-        if (nextLevel == 1)
+        if (nextLevel == 1)                                      //тут потом посмотришь нужно исправить, часть скрипта не нужна
         {
             var nextSceneIndex = PlayerPrefs.GetInt("SavedLevel") + 1;
             SceneManager.LoadScene(nextSceneIndex);

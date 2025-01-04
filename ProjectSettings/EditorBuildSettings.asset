@@ -15,17 +15,56 @@ EditorBuildSettings:
     path: Assets/Scenes/2.unity
     guid: 47c8219aaf10cb24a95e0ba9d49ec63e
   - enabled: 1
+    path: Assets/Scenes/2 1.unity
+    guid: ba90b9da9181c6a4ea08f053322e3d66
+  - enabled: 1
     path: Assets/Scenes/3.unity
     guid: 24b1a563df5dccd4ba1a4bb8bec207a3
+  - enabled: 1
+    path: Assets/Scenes/3 1.unity
+    guid: e60f4d3d8f307ed4c9c2911c257a51b4
   - enabled: 1
     path: Assets/Scenes/4.unity
     guid: 215df5d5b0771cb468fb695fca1505d3
   - enabled: 1
+    path: Assets/Scenes/4 1.unity
+    guid: 0559fcf06e3e56045929d24f265f40ae
+  - enabled: 1
+    path: Assets/Scenes/4 2.unity
+    guid: 990341935548fc84786ddee8dd0a59bf
+  - enabled: 1
     path: Assets/Scenes/5.unity
     guid: ccf7fd59dbdf68b4e81e9e5616c05251
   - enabled: 1
+    path: Assets/Scenes/5 1.unity
+    guid: 25ce1a966eb529c47b2f187fbd5921c6
+  - enabled: 1
     path: Assets/Scenes/6.unity
     guid: 6ab6b3e8db1d5f14abda295225eff13b
+  - enabled: 1
+    path: Assets/Scenes/6 1.unity
+    guid: 361130932fe9cfe4da225c626facbca1
+  - enabled: 1
+    path: Assets/Scenes/7 1.unity
+    guid: c6a2ffcecb0af99439bbc14c1a9fd5b7
+  - enabled: 1
+    path: Assets/Scenes/7.unity
+    guid: 49ac6411d5b419c4fb8ceef90a00b7a0
+  - enabled: 1
+    path: Assets/Scenes/7 2.unity
+    guid: 8a5853cf8fe65364fa16c791e9bfa729
+  - enabled: 0
+    path: Assets/Scenes/8.unity
+    guid: 7a7da7c76862d4840be94ab43f626dd2
+  - enabled: 0
+    path: Assets/Scenes/9.unity
+    guid: a62cb2a084669e949a24b5a649a676ad
+  - enabled: 0
+    path: Assets/Scenes/10.unity
+    guid: cf10f2df88e11f54cbec18225d2dbdcb
+  - enabled: 0
+    path: Assets/Scenes/11.unity
+    guid: f251784599071aa43bf26c432894c78e
   - enabled: 1
     path: Assets/Scenes/End.unity
     guid: 9da769397bd8da54f89bb3a22afb6539
@@ -33,9 +72,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Angar.unity
     guid: 8eeb08facd794294291a6f401baf0438
   - enabled: 1
-    path: Assets/Scenes/Dead.unity
-    guid: 1e5443a25d009b94693db919debb44dd
-  - enabled: 1
     path: Assets/Scenes/Choose First tank.unity
     guid: 43bbbd17db1c038469529f7cdc63f24e
+  - enabled: 1
+    path: Assets/Scenes/Dead.unity
+    guid: 1e5443a25d009b94693db919debb44dd
   m_configObjects: {}

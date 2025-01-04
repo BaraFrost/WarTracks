@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baa93890506f4d040bfd981c66264623, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heelCount: 25
+  heelCount: 40
   rb: {fileID: 0}
   shootSound: {fileID: 8300000, guid: 1b123a26aaee7d2478a8c746024dd054, type: 3}
   audioSource: {fileID: 0}

@@ -123,13 +123,13 @@ public class PlayerShoot : MonoBehaviour
                     if (drob == true)
                     {
                     Instantiate(bullet, shotPosition.transform.position, transform.rotation);
-                        audioSource.PlayOneShot(shootSound);
+                        //audioSource.PlayOneShot(shootSound);
                         Instantiate(bullet, shotPosition.transform.position, transform.rotation);
-                        audioSource.PlayOneShot(shootSound);
+                       // audioSource.PlayOneShot(shootSound);
                         Instantiate(bullet, shotPosition.transform.position, transform.rotation);
-                        audioSource.PlayOneShot(shootSound);
+                        //audioSource.PlayOneShot(shootSound);
                         Instantiate(bullet, shotPosition.transform.position, transform.rotation);
-                        audioSource.PlayOneShot(shootSound);
+                       // audioSource.PlayOneShot(shootSound);
 
                     }
                     Instantiate(bullet, shotPosition.transform.position, transform.rotation);

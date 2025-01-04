@@ -7,11 +7,11 @@ using UnityEngine.UIElements;
 public class EnemyShoot : MonoBehaviour
 {
 
-    public GameObject player;
-    public GameObject gun;
+    [SerializeField]
+    private GameObject gun;
 
     [SerializeField]
-    private float dist;
+    private float dist; // Дистанция стрельбы
     [SerializeField]
     private Bullet bullet;
     [SerializeField]
@@ -19,69 +19,86 @@ public class EnemyShoot : MonoBehaviour
     [SerializeField]
     private int bulletCount;
     [SerializeField]
-    private float reloadTime;
-    [SerializeField]
-    private float repeatTime;
-    [SerializeField]
-    private float nextFireTime;
-    [SerializeField]
-    private float fireRate;
-    [SerializeField]
-    private int damageCount;
-    /*[SerializeField]
-    private Bullet damage;*/
-    [SerializeField]
-    private float minAngle;
-    [SerializeField]
-    private float maxAngle;
-    [SerializeField]
-    private float lifeTime;
-
+    private float fireRate; // Скорострельность
     [SerializeField]
     private AudioClip shootSound;
     [SerializeField]
     private AudioSource audioSource;
+
+    private float nextFireTime;
+    private Transform target;
+
     private void Start()
     {
-       player = GameObject.FindGameObjectWithTag("Player");
         nextFireTime = fireRate;
-        //Bullet.damage = damageCount;
-        //Bullet.minAngle = minAngle;
-        //Bullet.maxAngle = maxAngle;
-        //Bullet.lifeTime = lifeTime;
         audioSource = GetComponent<AudioSource>();
-
     }
-    void Update()
+
+    private void Update()
     {
-        
-        Vector3 difference = player.transform.position - shotPosition.transform.position;
+        FindClosestTarget(); // Постоянно ищем ближайшую цель
+
+        if (target == null)
+            return;
+
+        // Поворачиваем пушку в сторону цели
+        Vector3 difference = target.position - shotPosition.position;
         float rotationZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
         gun.transform.rotation = Quaternion.Euler(0.0f, 0.0f, rotationZ);
 
-        /*RaycastHit2D hit = Physics2D.Raycast(new Vector2(shotPosition.position.x, shotPosition.position.y), new Vector2(difference.x,difference.y), dist);
-        if (hit.collider != null && hit.collider.gameObject.TryGetComponent<PlayerController>(out var health))*/
-        
-        var currentDistance = Vector3.Distance(player.transform.position, transform.position);
-         
-        if(currentDistance<=dist)
+        // Проверяем расстояние и стреляем
+        float currentDistance = Vector3.Distance(target.position, transform.position);
+        if (currentDistance <= dist)
         {
-           
-            for (int x = bulletCount; x > 0; x--)
+            nextFireTime -= Time.deltaTime;
+            if (nextFireTime <= 0)
             {
-                nextFireTime -= Time.deltaTime;
-                if (nextFireTime <= 0)
-                { 
-                    Instantiate(bullet, shotPosition.transform.position, transform.rotation);
-                    audioSource.PlayOneShot(shootSound);
-
-                    nextFireTime = fireRate;
-                }
+                Shoot();
+                nextFireTime = fireRate;
             }
-        
-           
+        }
+    }
+
+    private void Shoot()
+    {
+        Instantiate(bullet, shotPosition.position, gun.transform.rotation);
+        if (shootSound != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(shootSound);
+        }
+    }
+
+    private void FindClosestTarget()
+    {
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        GameObject[] friendlies = GameObject.FindGameObjectsWithTag("Friendly");
+        GameObject[] allTargets = CombineArrays(players, friendlies);
+
+        float closestDistance = Mathf.Infinity;
+        Transform closestTarget = null;
+
+        foreach (GameObject obj in allTargets)
+        {
+            if (obj == null || !obj.activeInHierarchy)
+                continue;
+
+            float distance = Vector3.Distance(transform.position, obj.transform.position);
+            if (distance < closestDistance)
+            {
+                closestDistance = distance;
+                closestTarget = obj.transform;
+            }
         }
 
+        target = closestTarget;
     }
-   
+
+    private GameObject[] CombineArrays(GameObject[] array1, GameObject[] array2)
+    {
+        GameObject[] combined = new GameObject[array1.Length + array2.Length];
+        array1.CopyTo(combined, 0);
+        array2.CopyTo(combined, array1.Length);
+        return combined;
+    }
+
 }

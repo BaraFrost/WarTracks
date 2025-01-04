@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6271730480070183365}
   - component: {fileID: 4675440629852259790}
   - component: {fileID: 3178149609766528668}
+  - component: {fileID: 3295932462005840861}
   m_Layer: 0
   m_Name: DEADDerejaBL
   m_TagString: Untagged
@@ -112,3 +113,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &3295932462005840861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3657382241827333157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcfbda6f538ef7948ba5df0fcc43cbcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeTime: 10

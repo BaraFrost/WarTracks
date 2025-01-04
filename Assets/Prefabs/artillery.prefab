@@ -145,7 +145,7 @@ MonoBehaviour:
   dead: {fileID: 8559902612530703117, guid: e3c0b1f805afa3b4993a7569a6317801, type: 3}
   spawnRange: 0
   maxRange: 10
-  mediumRange: 5
+  mediumRange: 9
   earn: {fileID: 3327003030168441818}
   isHeeling: 1
   spawnDead: 1
@@ -283,7 +283,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coin: 0
   coinEarn: 1
-  value: {fileID: 0}
+  coinValues: 0
 --- !u!82 &1773572137858755278
 AudioSource:
   m_ObjectHideFlags: 0
@@ -480,16 +480,14 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 3
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8586926687575530401, guid: 0511b6f56951fc1429f52632cc1716c9, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1848271148720895220, guid: 0511b6f56951fc1429f52632cc1716c9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4233803679123175487}
-    - targetCorrespondingSourceObject: {fileID: 1848271148720895220, guid: 0511b6f56951fc1429f52632cc1716c9, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 604427337400147153}
   m_SourcePrefab: {fileID: 100100000, guid: 0511b6f56951fc1429f52632cc1716c9, type: 3}
 --- !u!4 &3265145736033004866 stripped
 Transform:
@@ -521,32 +519,6 @@ MonoBehaviour:
   maxAngle: 0
   bullet: {fileID: 1033841728215470640, guid: df062ac15ce933d4d906567a42f6ca58, type: 3}
   shotPosition: {fileID: 5439344770196121595}
---- !u!114 &604427337400147153
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4202716890620135610}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d297ef7d3a22c247b3b83ad94002c7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeed: 30
-  rotationRange: {x: -20, y: 30}
-  rotationRanger: {x: 0, y: 0}
-  rotationRangeL: {x: 0, y: 0}
-  T: 0
-  S: 0
-  joystick: {fileID: 0}
-  player: {fileID: 0}
-  rotZ: 0
-  rotX: 0
-  rotY: 0
-  absRotZ: 0
-  x: 0
-  y: 0
 --- !u!4 &5439344770196121595 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7532555495740349365, guid: 0511b6f56951fc1429f52632cc1716c9, type: 3}

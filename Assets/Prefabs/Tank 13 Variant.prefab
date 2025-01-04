@@ -1,5 +1,40 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6302835301223581073
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 548776329678328733}
+  m_Layer: 5
+  m_Name: FriendlyTankSpawn
+  m_TagString: dRSpawn
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &548776329678328733
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6302835301223581073}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.66664094, y: 0.66664094, z: 0.99995995}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2505900397905688642}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.262, y: -0.043}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &711883522981513578
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -58,15 +93,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3109631537103630632, guid: f2a17cb0be6c2844a94cf2eb025d78fe, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.5
+      value: 1.4999999
       objectReference: {fileID: 0}
     - target: {fileID: 3109631537103630632, guid: f2a17cb0be6c2844a94cf2eb025d78fe, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.5
+      value: 1.4999999
       objectReference: {fileID: 0}
     - target: {fileID: 3109631537103630632, guid: f2a17cb0be6c2844a94cf2eb025d78fe, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.114
+      value: 0.13899992
       objectReference: {fileID: 0}
     - target: {fileID: 3109631537103630632, guid: f2a17cb0be6c2844a94cf2eb025d78fe, type: 3}
       propertyPath: m_LocalPosition.y
@@ -178,7 +213,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4528461185183398826, guid: f2a17cb0be6c2844a94cf2eb025d78fe, type: 3}
       propertyPath: maxDistance
-      value: 15
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 4528461185183398826, guid: f2a17cb0be6c2844a94cf2eb025d78fe, type: 3}
       propertyPath: maxDistancew
@@ -210,7 +245,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: d91536fa461ac214c91b46be82d7a35e, type: 3}
     - target: {fileID: 5130081570639205619, guid: f2a17cb0be6c2844a94cf2eb025d78fe, type: 3}
       propertyPath: bulletCount
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5130081570639205619, guid: f2a17cb0be6c2844a94cf2eb025d78fe, type: 3}
       propertyPath: joystikShootRadius
@@ -266,16 +301,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7851786197692883325, guid: f2a17cb0be6c2844a94cf2eb025d78fe, type: 3}
       propertyPath: value
-      value: 40
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7851786197692883325, guid: f2a17cb0be6c2844a94cf2eb025d78fe, type: 3}
+      propertyPath: heeling
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7851786197692883325, guid: f2a17cb0be6c2844a94cf2eb025d78fe, type: 3}
       propertyPath: maxValue
-      value: 40
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7851786197692883325, guid: f2a17cb0be6c2844a94cf2eb025d78fe, type: 3}
+      propertyPath: isHeeling
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7851786197692883325, guid: f2a17cb0be6c2844a94cf2eb025d78fe, type: 3}
+      propertyPath: spawnDead
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7851786197692883325, guid: f2a17cb0be6c2844a94cf2eb025d78fe, type: 3}
       propertyPath: shootSound
       value: 
       objectReference: {fileID: 8300000, guid: 0f506a096c200634a9923f43b09970aa, type: 3}
+    - target: {fileID: 8480387327085768101, guid: f2a17cb0be6c2844a94cf2eb025d78fe, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8480387327085768101, guid: f2a17cb0be6c2844a94cf2eb025d78fe, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -303,8 +354,12 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 5767785702646315062, guid: f2a17cb0be6c2844a94cf2eb025d78fe, type: 3}
     - {fileID: 7207030490153710374, guid: f2a17cb0be6c2844a94cf2eb025d78fe, type: 3}
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3733791574977475994, guid: f2a17cb0be6c2844a94cf2eb025d78fe, type: 3}
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 3109631537103630632, guid: f2a17cb0be6c2844a94cf2eb025d78fe, type: 3}
+      insertIndex: 0
+      addedObject: {fileID: 548776329678328733}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1991761921517359718, guid: f2a17cb0be6c2844a94cf2eb025d78fe, type: 3}
       insertIndex: -1
@@ -414,6 +469,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!4 &2505900397905688642 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3109631537103630632, guid: f2a17cb0be6c2844a94cf2eb025d78fe, type: 3}
+  m_PrefabInstance: {fileID: 711883522981513578}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2687531851768940079 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3219257553417932613, guid: f2a17cb0be6c2844a94cf2eb025d78fe, type: 3}

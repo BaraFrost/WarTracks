@@ -6,8 +6,7 @@ using UnityEngine;
 public class HeelingController : MonoBehaviour
 {
     public int value;
-    [SerializeField]
-    private TMP_Text count;
+    
 
     // Update is called once per frame
     void Update()

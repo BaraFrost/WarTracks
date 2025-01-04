@@ -5,35 +5,80 @@ using UnityEngine;
 public class SkillsController : MonoBehaviour
 {
     [SerializeField]
-    private GameObject objectPrefab; // Префаб объекта, который нужно спавнить
+    private GameObject bomb; // Префаб бомбы
     [SerializeField]
-    private RectTransform canvasTransform; // Канвас
+    private GameObject heel; // Префаб бомбы
+    
     [SerializeField]
-    private float minY = -200f; // Минимальное значение по оси Y
+    private List<GameObject> artellerySpawn = new List<GameObject>(); // Список объектов
     [SerializeField]
-    private float maxY = 200f; // Максимальное значение по оси Y
+    private List<GameObject> heelSpawn = new List<GameObject>(); // Список объектов
     [SerializeField]
-    private int spawnCount = 5; // Количество объектов для спавна
+    private int artBomb;
 
-    // Объект, относительно которого будет происходить спаун
     [SerializeField]
-    private RectTransform referenceObject;
+    private int heelCount;
+    
+
+    private int artPrice=1;
+    
+    private int heelPrice=1;
+
+    private void Start()
+    {
+        artBomb = PlayerPrefs.GetInt("Bomb");
+        heelCount = PlayerPrefs.GetInt("Heel");
+    }
+  
+    public void PlayerArtellery()
+    {
+        // Проверяем нажатие клавиши (например, пробел)
+        if (artBomb > 0)
+        {
+            SpawnBombs();
+            artBomb -= artPrice;
+            PlayerPrefs.SetInt("Bomb", artBomb);
+            PlayerPrefs.Save();
+        }
+    }
+    public void PlayerHeel()
+    {
+        if (heelCount > 0)
+        {
+            SpawnHeel();
+            heelCount -= heelPrice;
+            PlayerPrefs.SetInt("Heel", heelCount);
+            PlayerPrefs.Save();
+        }
+    }
 
     
 
-    public void TriggerArtillery()
+    private void SpawnBombs()
     {
-        for (int i = 0; i < spawnCount; i++)
+        // Проходим по каждому объекту в списке
+        foreach (var obj in artellerySpawn)
         {
-            // Генерация случайной позиции по оси Y в заданном диапазоне
-            float randomY = Random.Range(minY, maxY);
-
-            // Создаем объект и прикрепляем его к канвасу
-            GameObject newObject = Instantiate(objectPrefab, canvasTransform);
-            RectTransform newObjectRect = newObject.GetComponent<RectTransform>();
-
-            // Устанавливаем локальную позицию относительно родительского объекта
-            newObjectRect.anchoredPosition = new Vector2(referenceObject.anchoredPosition.x, randomY);
+            if (obj != null) // Проверяем, что объект существует
+            {
+                // Спавним бомбу на позиции объекта
+                Instantiate(bomb, obj.transform.position, Quaternion.identity);
+            }
         }
     }
+
+    private void SpawnHeel()
+    {
+        // Проходим по каждому объекту в списке
+        foreach (var obj in heelSpawn)
+        {
+            if (obj != null) // Проверяем, что объект существует
+            {
+                // Спавним бомбу на позиции объекта
+                Instantiate(heel, obj.transform.position, Quaternion.identity);
+            }
+        }
+    }
+
+
 }

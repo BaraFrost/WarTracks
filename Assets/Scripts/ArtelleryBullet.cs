@@ -45,6 +45,10 @@ public class ArtelleryBullet : MonoBehaviour
         {
             HandleCollision();
         }
+        else if (collision.gameObject.tag == "PlayerBullet")
+        {
+            HandleCollision();
+        }
         else if (collision.gameObject.TryGetComponent<EntityHealth>(out var health))
         {
             health.value -= damage;
@@ -58,9 +62,9 @@ public class ArtelleryBullet : MonoBehaviour
         {
             PlaySound(collisionSound);
         }
-
-        Destroy(gameObject);
         Instantiate(smoke, transform.position, transform.rotation);
+        Destroy(gameObject);
+        
     }
 
     private void PlaySound(AudioClip clip)

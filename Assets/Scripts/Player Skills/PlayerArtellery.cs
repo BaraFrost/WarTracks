@@ -1,0 +1,107 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerArtellery : MonoBehaviour
+{
+    [SerializeField] private float speed;
+    private Rigidbody2D rb;
+    [SerializeField] private int damage;
+    public float lifeTime;
+    public float minAngle;  // минимальный угол в градусах
+    public float maxAngle;  // максимальный угол в градусах
+    [SerializeField] private GameObject smoke;
+    [SerializeField] private AudioClip collisionSound;
+
+    private TrailRenderer trailRenderer;
+    private Renderer objectRenderer;
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        trailRenderer = GetComponent<TrailRenderer>();
+        objectRenderer = GetComponent<Renderer>();
+
+        // Очищаем Trail Renderer перед началом
+        if (trailRenderer != null)
+        {
+            trailRenderer.Clear();
+        }
+
+        // Задаём начальную скорость снаряда
+        float randomAngle = UnityEngine.Random.Range(minAngle, maxAngle);
+        Vector3 direction = Quaternion.AngleAxis(randomAngle, Vector3.forward) * transform.right;
+        rb.velocity = direction * speed;
+
+        // Устанавливаем изначальную ориентацию
+        RotateTowardsMovementDirection(rb.velocity);
+    }
+
+    void Update()
+    {
+        // Уменьшаем время жизни снаряда
+        lifeTime -= Time.deltaTime;
+        if (lifeTime <= 0)
+        {
+            Destroy(gameObject);
+        }
+
+        // Поворачиваем снаряд в направлении движения
+        RotateTowardsMovementDirection(rb.velocity);
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            HandleCollision();
+        }
+        else if (collision.gameObject.TryGetComponent<EntityHealth>(out var health))
+        {
+            health.value -= damage;
+            HandleCollision();
+        }
+    }
+
+    private void HandleCollision()
+    {
+        if (objectRenderer.isVisible) // Проверяем, видим ли объект
+        {
+            PlaySound(collisionSound);
+        }
+
+        Destroy(gameObject);
+        Instantiate(smoke, transform.position, transform.rotation);
+    }
+
+    private void PlaySound(AudioClip clip)
+    {
+        if (clip == null) return;
+
+        // Создаём временный объект для звука
+        GameObject tempSoundObject = new GameObject("TempAudio");
+        AudioSource tempAudioSource = tempSoundObject.AddComponent<AudioSource>();
+
+        // Настраиваем параметры звука
+        tempAudioSource.clip = clip;
+        tempAudioSource.volume = 0.1f;
+        tempAudioSource.spatialBlend = 0;
+        tempAudioSource.Play();
+
+        // Уничтожаем временный объект после завершения воспроизведения
+        Destroy(tempSoundObject, clip.length);
+    }
+
+    private void RotateTowardsMovementDirection(Vector2 movement)
+    {
+        // Проверяем, есть ли движение
+        if (movement.sqrMagnitude > 0.01f)
+        {
+            // Вычисляем угол в градусах от вектора движения
+            float angle = Mathf.Atan2(movement.y, movement.x) * Mathf.Rad2Deg;
+
+            // Поворачиваем объект по оси Z (в 2D пространстве)
+            rb.rotation = angle;
+        }
+    }
+}

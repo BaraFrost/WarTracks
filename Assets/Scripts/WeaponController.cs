@@ -35,52 +35,37 @@ public class WeaponController : MonoBehaviour
     private float x;
     [SerializeField]
     private float y;
-    // Start is called before the first frame update
+
+    public enum FireMode { Parabolic, Straight }
+    public FireMode CurrentFireMode { get; private set; } = FireMode.Parabolic; // Режим стрельбы
+    public float CurrentAngle { get; private set; }
+    public void ToggleFireMode()
+    {
+        // Переключение режима
+        CurrentFireMode = (CurrentFireMode == FireMode.Parabolic) ? FireMode.Straight : FireMode.Parabolic;
+    }
     void Start()
     {
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-
-
-   /* public void OnUpButtonDown()
-    {
-        T = true;
-        // gunRotation.z += rotationSpeed * Time.deltaTime;
-
-    }
-
-    public void OnDownButtonDown()
-    {
-        S = true;
-        // gunRotation.z -= rotationSpeed * Time.deltaTime;
-
-    }
-
-    public void OnButtonsUp()
-    {
-        T = false;
-        S = false;
-        gunRotation.z = gunRotation.z;
-    }
-   */
+   
     void Update()
     {
 
-        rotZ = player.transform.rotation.z;//посмотри и исправь всё тут только 69 71 72 79 родные остальное ты дописал вчера не работает как надо нужно чтобы при изменении угла менялся рэёндж и прицел не дергался в зависимости на что ты наехал и какой угол у танка может это можно и по простому сделать тупо выставив пушку
+        rotZ = player.transform.rotation.z;
 
-       
-        // absRotZ = Mathf.Abs(rotZ);
-        //rotX=rotationRange.x;
-        // rotY=rotationRange.y;
+        
+
+        Vector3 joystickDirection = Quaternion.LookRotation(Vector3.forward, Vector3.up * joystick.Horizontal + Vector3.left * joystick.Vertical).eulerAngles;
+        CurrentAngle = Mathf.Clamp(joystickDirection.z < 180 ? joystickDirection.z : joystickDirection.z - 360, -180, 180);
+
         if (joystick.Horizontal > 0 && joystick.Vertical != 0)
         {
 
-            // moveVector.z = Mathf.Clamp(moveVector.z < 180 ? moveVector.z : moveVector.z - 360, rotationRange.x, rotationRange.y);
 
 
-            if (rotZ< 0.1 && rotZ>-0.1)
+            if (rotZ < 0.1 && rotZ > -0.1)
             {
 
                 Vector3 moveVector = Quaternion.LookRotation(Vector3.forward, Vector3.up * joystick.Horizontal + Vector3.left * joystick.Vertical).eulerAngles;
@@ -108,26 +93,10 @@ public class WeaponController : MonoBehaviour
 
         }
 
+
+
     }
+
 }
 
-        /*if (T == true)
-        {
-            gunRotation.z += rotationSpeed * Time.deltaTime;
-            gunRotation.z = Mathf.Clamp(gunRotation.z, rotationRange.x, rotationRange.y);
-            transform.localRotation = Quaternion.Euler(gunRotation);
-        }
-        if (S == true)
-        {
-            gunRotation.z -= rotationSpeed * Time.deltaTime;
-            gunRotation.z = Mathf.Clamp(gunRotation.z, rotationRange.x, rotationRange.y);
-            transform.localRotation = Quaternion.Euler(gunRotation);
-        }
-    }
-    // gunRotation.z = Mathf.Clamp(gunRotation.z, rotationRange.x, rotationRange.y);
-    // transform.localRotation = Quaternion.Euler(gunRotation);
-
-    // Vector3 gunRotations = new Vector3(gunRotation.z,rotationRange.x,rotationRange.y);
-    // transform.localRotation = Quaternion.Euler(gunRotations);
-}*/
-
+  

@@ -145,6 +145,7 @@ Transform:
   - {fileID: 8992368369522908871}
   - {fileID: 7016137108439781452}
   - {fileID: 9064201021822373493}
+  - {fileID: 9161057347455432151}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3496113390287128700
@@ -173,7 +174,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: 0
-  count: {fileID: 0}
 --- !u!114 &9017886555453887617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,7 +214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heelPosition: {fileID: 5581149275496462148}
   smoke: {fileID: 6813416509558619124, guid: 3b7f2c753d435d647a80f1f047a113e3, type: 3}
-  heeling: {fileID: 3878785233258721366, guid: 30af4bdcbe1078d469bc4eebf0f05b22, type: 3}
+  heeling: {fileID: 0}
   value: 100
   Bar: {fileID: 0}
   maxValue: 100
@@ -224,8 +224,8 @@ MonoBehaviour:
   maxRange: 0
   mediumRange: 0
   earn: {fileID: 0}
-  isHeeling: 1
-  spawnDead: 1
+  isHeeling: 0
+  spawnDead: 0
   isDeadracer: 0
   shootSound: {fileID: 8300000, guid: 0f506a096c200634a9923f43b09970aa, type: 3}
   audioSource: {fileID: 0}
@@ -368,7 +368,7 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.22, y: -0.07440572}
+  m_Offset: {x: 0.19, y: -0.07440572}
   serializedVersion: 2
   m_Radius: 0.08143978
 --- !u!61 &7934587195086179449
@@ -769,7 +769,7 @@ MonoBehaviour:
   shotPosition: {fileID: 163342578218377598}
   bullet: {fileID: 259732439777441520, guid: fc8df6879d63a7a469dc7f742f64a013, type: 3}
   bulletCount: 1
-  reloadTime: 2
+  reloadTime: 1.8
   repeatTime: 0.1
   reload: {fileID: 0}
   dmg: 5
@@ -934,6 +934,41 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &7769913192007131181
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9161057347455432151}
+  m_Layer: 5
+  m_Name: FriendlyTankSpawn
+  m_TagString: dRSpawn
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &9161057347455432151
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7769913192007131181}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.7999691, y: 0.7999691, z: 0.9999599}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5581149275496462148}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.304, y: -0.06}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1581315063389897674
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1271,7 +1306,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8966488499858897343, guid: e785fd5a52c748e47877e733cf53c73d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.1947
+      value: 0.2382
       objectReference: {fileID: 0}
     - target: {fileID: 8966488499858897343, guid: e785fd5a52c748e47877e733cf53c73d, type: 3}
       propertyPath: m_LocalPosition.y

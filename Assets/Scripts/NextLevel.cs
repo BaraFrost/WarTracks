@@ -19,7 +19,11 @@ public class NextLevel : MonoBehaviour
 
     [SerializeField]
     private AngarController buy;
-     
+
+    [SerializeField]
+    private int level;
+
+    public int endLevel;
     public void Start()
     {
         var activeSceneIndex = SceneManager.GetActiveScene().buildIndex;
@@ -33,20 +37,27 @@ public class NextLevel : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            if (buy.goBuy == 0)
+            endLevel = 1;
+            PlayerPrefs.SetInt("EndLevel", endLevel);
+            PlayerPrefs.SetInt("SavedLevel", nextSceneNumber);
+            SceneManager.LoadScene(16);
+
+            /*if (buy.goBuy == 0)
             {
                 SceneManager.LoadScene(nextSceneNumber);
+
             }
-            else if(buy.goBuy == 1)
+            else if (buy.goBuy == 1)
             {
                 SceneManager.LoadScene(nextSceneNumber);
-                  enter = 1;
+                enter = 1;
+
             }
-            if (enter==1)
+            if (enter == 1)
             {
                 SceneManager.LoadScene(6);
             }
-
+            */
         }
 
     }

@@ -18,6 +18,9 @@ public class LoadTank : MonoBehaviour
     private GameObject tank13;
     [SerializeField]
     private GameObject tank23;
+    [SerializeField]
+    private GameObject tank23Button;
+   
     private void Awake()
     {
         tank = PlayerPrefs.GetInt("TankID");
@@ -45,6 +48,9 @@ public class LoadTank : MonoBehaviour
         else if (tank == 23)
         {
             tank23.SetActive(true);
+
+            tank23Button.SetActive(true);
+           // tank23Artellery.SetActive(true);
         }
     }
     void Start()

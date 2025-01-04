@@ -4,59 +4,93 @@ using UnityEngine;
 
 public class PlayerArtelleryBullet : MonoBehaviour
 {
-    [SerializeField]
-    private float speed;
+    [SerializeField] private float speed;
     private Rigidbody2D rb;
-    private SpriteRenderer sprite;
-    public bool moveRight;
-    [SerializeField]
-    private float damage;
-    public float lifeTime;
-    public float minAngle; // минимальный угол в градусах
-    public float maxAngle; // максимальный угол в градусах
-    [SerializeField]
-    private GameObject smoke;
-    private EntityHealth entityHealth;
+    [SerializeField] private float damage;
 
-    [SerializeField]
-    private AudioClip wallSound;
-    [SerializeField]
-    private AudioClip healthSound;
+    [Header("Время жизни снаряда")]
+    [SerializeField] private float lifeTimeParabolic = 3f; // Время жизни в параболическом режиме
+    [SerializeField] private float lifeTimeStraight = 5f; // Время жизни в прямом режиме
 
-    [SerializeField]
-    private LineRenderer lineRenderer; // Линия для отображения траектории
-    [SerializeField]
-    private int maxPoints = 50; // Максимальное количество точек
-    [SerializeField]
-    private float pointSpacing = 0.1f; // Интервал между точками
+    private float lifeTime; // Текущее время жизни снаряда
 
-    private List<Vector3> trajectoryPoints = new List<Vector3>();
+    [SerializeField] private float minAngle;
+    [SerializeField] private float maxAngle;
+    [SerializeField] private GameObject smoke;
+    [SerializeField] private AudioClip wallSound;
+    [SerializeField] private AudioClip healthSound;
+
+    [SerializeField] private WeaponController weaponController;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        if (lineRenderer == null)
+
+        // Находим WeaponController
+        weaponController = FindObjectOfType<WeaponController>();
+
+        // Устанавливаем начальное время жизни в зависимости от режима стрельбы
+        SetLifeTime();
+
+        // Устанавливаем начальную траекторию
+        SetInitialVelocity();
+    }
+
+    void Update()
+    {
+        lifeTime -= Time.deltaTime;
+        if (lifeTime <= 0)
         {
-            lineRenderer = gameObject.AddComponent<LineRenderer>();
+            Destroy(gameObject);
         }
 
-        // Настраиваем LineRenderer
-        lineRenderer.positionCount = 0;
-        lineRenderer.startWidth = 0.05f;
-        lineRenderer.endWidth = 0.05f;
-        lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
-        lineRenderer.startColor = Color.yellow;
-        lineRenderer.endColor = Color.red;
+        // Проверяем текущий режим стрельбы
+        if (weaponController != null && weaponController.CurrentFireMode == WeaponController.FireMode.Straight)
+        {
+            rb.velocity = transform.right * speed;
+        }
 
-        // Задаём начальную скорость снаряда
-        float randomAngle = UnityEngine.Random.Range(minAngle, maxAngle);
-        Vector3 direction = Quaternion.AngleAxis(randomAngle, Vector3.forward) * transform.right;
-        rb.velocity = direction * speed;
+        RotateTowardsMovementDirection(rb.velocity);
+    }
 
-        // Добавляем первую точку траектории
-        trajectoryPoints.Add(transform.position);
-        lineRenderer.positionCount = 1;
-        lineRenderer.SetPosition(0, transform.position);
+    private void SetLifeTime()
+    {
+        // Устанавливаем время жизни в зависимости от текущего режима стрельбы
+        if (weaponController != null)
+        {
+            lifeTime = weaponController.CurrentFireMode == WeaponController.FireMode.Parabolic
+                ? lifeTimeParabolic
+                : lifeTimeStraight;
+        }
+        else
+        {
+            lifeTime = lifeTimeParabolic; // Значение по умолчанию
+        }
+    }
+
+    private void SetInitialVelocity()
+    {
+        if (weaponController != null && weaponController.CurrentFireMode == WeaponController.FireMode.Parabolic)
+        {
+            // Устанавливаем параболическую траекторию
+            float randomAngle = UnityEngine.Random.Range(minAngle, maxAngle);
+            Vector3 direction = Quaternion.AngleAxis(randomAngle, Vector3.forward) * transform.right;
+            rb.velocity = direction * speed;
+        }
+        else
+        {
+            // Прямая траектория
+            rb.velocity = transform.right * speed;
+        }
+    }
+
+    private void RotateTowardsMovementDirection(Vector2 movement)
+    {
+        if (movement.sqrMagnitude > 0.01f)
+        {
+            float angle = Mathf.Atan2(movement.y, movement.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0, 0, angle);
+        }
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
@@ -70,26 +104,11 @@ public class PlayerArtelleryBullet : MonoBehaviour
 
         if (collision.gameObject.TryGetComponent<EntityHealth>(out var health))
         {
-            health.value = health.value - damage;
+            health.value -= damage;
             PlaySound(healthSound);
             Destroy(gameObject);
             Instantiate(smoke, transform.position, transform.rotation);
         }
-    }
-
-    public void Update()
-    {
-        lifeTime -= Time.deltaTime;
-        if (lifeTime <= 0)
-        {
-            Destroy(gameObject);
-        }
-
-        // Обновляем траекторию
-        UpdateTrajectory();
-
-        // Поворачиваем снаряд в направлении движения
-        RotateTowardsMovementDirection(rb.velocity);
     }
 
     private void PlaySound(AudioClip clip)
@@ -103,33 +122,5 @@ public class PlayerArtelleryBullet : MonoBehaviour
         tempAudioSource.spatialBlend = 0;
         tempAudioSource.Play();
         Destroy(tempSoundObject, clip.length);
-    }
-
-    void RotateTowardsMovementDirection(Vector2 movement)
-    {
-        if (movement.sqrMagnitude > 0.01f) // Проверка, чтобы угол рассчитывался только при наличии движения
-        {
-            float angle = Mathf.Atan2(movement.y, movement.x) * Mathf.Rad2Deg;
-            rb.rotation = angle; // Устанавливаем поворот Rigidbody2D
-        }
-    }
-
-    private void UpdateTrajectory()
-    {
-        // Добавляем текущую позицию в список точек, если она достаточно далека от предыдущей
-        if (trajectoryPoints.Count == 0 || Vector3.Distance(trajectoryPoints[trajectoryPoints.Count - 1], transform.position) >= pointSpacing)
-        {
-            trajectoryPoints.Add(transform.position);
-
-            // Ограничиваем количество точек
-            if (trajectoryPoints.Count > maxPoints)
-            {
-                trajectoryPoints.RemoveAt(0);
-            }
-
-            // Обновляем LineRenderer
-            lineRenderer.positionCount = trajectoryPoints.Count;
-            lineRenderer.SetPositions(trajectoryPoints.ToArray());
-        }
     }
 }

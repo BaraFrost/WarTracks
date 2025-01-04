@@ -7,8 +7,7 @@ using UnityEngine.UI;
 public class BuyTank : MonoBehaviour
 {
     [SerializeField]
-    private CoinCount coinCount;
-
+    private int coinValue;
     
     public int tank12Bue = 0;
 
@@ -89,8 +88,13 @@ public class BuyTank : MonoBehaviour
     private int shadow23 = 0;
     [SerializeField]
     private int tank23ShadowOff;
+
+    [SerializeField]
+    private AudioClip buyTankSound;
     void Start()
     {
+        open13 = PlayerPrefs.GetInt("13Open");
+        open23 = PlayerPrefs.GetInt("23Open");
         tank12Bue = PlayerPrefs.GetInt("12TankBue");
         tank22Bue = PlayerPrefs.GetInt("22TankBue");
         tank13Bue = PlayerPrefs.GetInt("13TankBue");
@@ -99,6 +103,9 @@ public class BuyTank : MonoBehaviour
         shadow13 = PlayerPrefs.GetInt("13ShadowOff");
         shadow22 = PlayerPrefs.GetInt("22ShadowOff");
         shadow23 = PlayerPrefs.GetInt("23ShadowOff");
+
+        coinValue = PlayerPrefs.GetInt("Coin");
+
         if (shadow12 == 1)
         {
             tank12.color = new Color(1, 1, 1, 1);
@@ -150,7 +157,7 @@ public class BuyTank : MonoBehaviour
         shadow13 = PlayerPrefs.GetInt("13ShadowOff");
         shadow22 = PlayerPrefs.GetInt("22ShadowOff");
         shadow23 = PlayerPrefs.GetInt("23ShadowOff");
-
+        coinValue = PlayerPrefs.GetInt("Coin");
         if (shadow12 == 1)
         {
             tank12.color = new Color(1, 1, 1, 1);
@@ -216,7 +223,7 @@ public class BuyTank : MonoBehaviour
     // Update is called once per frame
     void UpdateMoney()
     {
-        coin = coinCount.coinValue;
+        coin = coinValue;
         coinRemains = coin - tankPrice;
 
 
@@ -224,7 +231,6 @@ public class BuyTank : MonoBehaviour
     }
     public void On12TankBue()
     {
-      
         tankPrice = price12;
         UpdateMoney();
         if(tank12Bue==0 && coinRemains >=0)
@@ -236,15 +242,21 @@ public class BuyTank : MonoBehaviour
             tank12.color = new Color(1, 1, 1, 1);
             tank121.color = new Color(1, 1, 1, 1);
             tank12Bue = 1;
-            coinCount.coinValue -= price12;
+            coinValue -= price12;
+            PlayerPrefs.SetInt("Coin", coinValue);
+            PlayerPrefs.Save();
             PlayerPrefs.SetInt("12TankBue", tank12Bue);
             PlayerPrefs.Save();
             open13 = 1;
-           
+            PlayerPrefs.SetInt("13Open", open13);
+            PlayerPrefs.Save();
+            PlaySound(buyTankSound);
         }
     }
     public void On22TankBue()
     {
+
+        
         tankPrice = price22;
         UpdateMoney();
         if (tank22Bue == 0 && coinRemains>=0)
@@ -254,16 +266,22 @@ public class BuyTank : MonoBehaviour
             PlayerPrefs.Save();
             tank22.color = new Color(1, 1, 1, 1);
             tank221.color = new Color(1, 1, 1, 1);
-            coinCount.coinValue -= price22;
+            coinValue -= price22;
+            PlayerPrefs.SetInt("Coin", coinValue);
+            PlayerPrefs.Save();
             tank22Bue = 1;
             PlayerPrefs.SetInt("22TankBue", tank22Bue);
             PlayerPrefs.Save();
             open23= 1;
+            PlayerPrefs.SetInt("23Open", open23);
+            PlayerPrefs.Save();
             value22Tank.SetActive(false);
+            PlaySound(buyTankSound);
         }
     }
     public void On13TankBue()
     {
+
         tankPrice = price13;
         UpdateMoney();
         if (tank13Bue == 0 && coinRemains >= 0 && open13==1)
@@ -273,11 +291,13 @@ public class BuyTank : MonoBehaviour
             PlayerPrefs.Save();
             tank13.color = new Color(1, 1, 1, 1);
             tank131.color = new Color(1, 1, 1, 1);
-            coinCount.coinValue -= price13;
+            coinValue -= price13;
+            PlayerPrefs.SetInt("Coin", coinValue);
+            PlayerPrefs.Save();
             tank13Bue = 1;
             PlayerPrefs.SetInt("13TankBue", tank13Bue);
             PlayerPrefs.Save();
-            
+            PlaySound(buyTankSound);
         }
     }
     public void On23TankBue()
@@ -292,15 +312,21 @@ public class BuyTank : MonoBehaviour
             PlayerPrefs.Save();
             tank23.color = new Color(1, 1, 1, 1);
             tank231.color = new Color(1, 1, 1, 1);
-            coinCount.coinValue -= price23;
+            coinValue -= price23;
+            PlayerPrefs.SetInt("Coin", coinValue);
+            PlayerPrefs.Save();
             tank23Bue = 1;
             PlayerPrefs.SetInt("23TankBue", tank23Bue);
             PlayerPrefs.Save();
+            PlaySound(buyTankSound);
+
         }
     }
     public void Give100() 
     {
-        coinCount.coinValue += 100;
+        coinValue += 100;
+        PlayerPrefs.SetInt("Coin", coinValue);
+        PlayerPrefs.Save();
     }
     public void DeliteAllTanks()
     {
@@ -316,5 +342,23 @@ public class BuyTank : MonoBehaviour
         PlayerPrefs.SetInt("13ShadowOff", shadow13);
         shadow23 = 0;
         PlayerPrefs.SetInt("23ShadowOff", shadow23);
+    }
+
+    private void PlaySound(AudioClip clip)
+    {
+        if (clip == null) return;
+
+        // Создаём временный объект для звука
+        GameObject tempSoundObject = new GameObject("TempAudio");
+        AudioSource tempAudioSource = tempSoundObject.AddComponent<AudioSource>();
+
+        // Настраиваем параметры звука
+        tempAudioSource.clip = clip;
+        tempAudioSource.volume = 0.35f; // Настройте громкость
+        tempAudioSource.spatialBlend = 0; // 2D звук
+        tempAudioSource.Play();
+
+        // Уничтожаем объект после воспроизведения звука
+        Destroy(tempSoundObject, clip.length);
     }
 }

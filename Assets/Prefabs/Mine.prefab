@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 4106807200116685614}
   m_Layer: 9
   m_Name: Mine
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 6
   m_Sprite: {fileID: 21300000, guid: b4318f0f6be4bfd4fadb0231d2d72b3b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -102,9 +102,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73781b8930a074f478d3c843d971730b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coin: 1
-  coinEarn: 0
-  value: {fileID: 0}
+  coin: 0
+  coinEarn: 1
+  coinValues: 0
 --- !u!114 &6431479872205617074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,7 +232,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2f5776a42ab81464d8e6a5d7572dc718, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 0
   Mute: 0

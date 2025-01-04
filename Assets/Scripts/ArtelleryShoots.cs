@@ -28,10 +28,12 @@ public class ArtelleryShoots : MonoBehaviour
     [SerializeField]
     private Transform shotPosition;
 
+    [SerializeField]
+    private int shotAngle = 45;
     void Update()
     {
         
-        gun.transform.rotation = Quaternion.Euler(0.0f, 180, 45);
+        gun.transform.rotation = Quaternion.Euler(0.0f, 180, shotAngle);
         for (int x = bulletCount; x > 0; x--)
         {
             nextFireTime -= Time.deltaTime;

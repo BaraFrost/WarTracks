@@ -163,17 +163,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93422a23409fd714fa7021b8ffa59c82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 5783265621146281019}
   gun: {fileID: 5783265621146281019}
-  dist: 40
+  dist: 50
   bullet: {fileID: 1875681675438033744, guid: 8c0ee0d6a4fb16c45930d0259bd896cc, type: 3}
   shotPosition: {fileID: 2003152279810617821}
-  bulletCount: 3
-  nextFireTime: 0
-  fireRate: 10
-  minAngle: -5
-  maxAngle: 5
-  lifeTime: 5
+  bulletCount: 1
+  fireRate: 5
   shootSound: {fileID: 8300000, guid: d91536fa461ac214c91b46be82d7a35e, type: 3}
   audioSource: {fileID: 0}
 --- !u!114 &2727271978853699358
@@ -188,20 +183,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5efd22ba5f2ab0b479b84e05f2ef0ba1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 7415161649340559190, guid: a5416e7b97249854681e8a6daa7b30db, type: 3}
   gun: {fileID: 5783265621146281019}
   dist: 30
   bullet: {fileID: 0}
   shotPosition: {fileID: 2003152279810617821}
   bulletCount: 3
-  reloadTime: 1
-  repeatTime: 0.25
-  nextFireTime: 0
   fireRate: 10
-  damageCount: 5
-  minAngle: -5
-  maxAngle: 5
-  lifeTime: 3
   shootSound: {fileID: 8300000, guid: d91536fa461ac214c91b46be82d7a35e, type: 3}
   audioSource: {fileID: 0}
 --- !u!212 &4121719733614993558
@@ -435,8 +422,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coin: 0
-  coinEarn: 2
-  value: {fileID: 0}
+  coinEarn: 3
+  coinValues: 0
 --- !u!212 &5150415528653063425
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -556,7 +543,7 @@ MonoBehaviour:
   dead: {fileID: 143408485454217606, guid: 47de78e3d2275e64ebb5028afca39c73, type: 3}
   spawnRange: 0
   maxRange: 10
-  mediumRange: 5
+  mediumRange: 9
   earn: {fileID: 6604052975710042215}
   isHeeling: 1
   spawnDead: 1

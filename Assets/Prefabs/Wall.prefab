@@ -175,8 +175,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coin: 0
-  coinEarn: 0
-  value: {fileID: 0}
+  coinEarn: 1
+  coinValues: 0
 --- !u!82 &4960552182063884133
 AudioSource:
   m_ObjectHideFlags: 0

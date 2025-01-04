@@ -54,7 +54,7 @@ MonoBehaviour:
   speed: 40
   moveRight: 1
   damage: 15
-  lifeTime: 0.5
+  lifeTime: 0.7
   minAngle: -2
   maxAngle: 6
   smoke: {fileID: 139366, guid: b185c1a9cf067374586d095111b15bd1, type: 3}

@@ -13,10 +13,10 @@ public class EntityHealth : MonoBehaviour
     private GameObject smoke;
     [SerializeField]
     private GameObject heeling;
-    public float value=100f;
+    public float value = 100f;
     public Image Bar;
     [SerializeField]
-    private float maxValue;
+    private float maxValue = 100f;
     [SerializeField]
     private TMP_Text health;
     [SerializeField]
@@ -24,9 +24,9 @@ public class EntityHealth : MonoBehaviour
     [SerializeField]
     private int spawnRange;
     [SerializeField]
-    private int maxRange=10;
+    private int maxRange = 10;
     [SerializeField]
-    private int mediumRange=5;
+    private int mediumRange = 5;
     [SerializeField]
     private CoinEarn earn;
     [SerializeField]
@@ -35,97 +35,110 @@ public class EntityHealth : MonoBehaviour
     private bool spawnDead = true;
     [SerializeField]
     private bool isDeadracer = false;
-
     [SerializeField]
     private AudioClip shootSound;
     [SerializeField]
     private AudioSource audioSource;
+
     private bool isTransitioning = false;
+
     void Start()
     {
         spawnRange = Random.Range(1, maxRange);
         audioSource = GetComponent<AudioSource>();
+        UpdateHealthUI();
     }
+
     void Update()
     {
-       
         if (value <= 0f)
         {
-            if (gameObject.tag == "Player" && !isTransitioning)
-            {
-                isTransitioning = true;
-                PlaySoundOnDestroy();
-                // Сохранение уровня
-                var activeSceneIndex = SceneManager.GetActiveScene().buildIndex;
-                PlayerPrefs.SetInt("SavedLevel", activeSceneIndex);
-
-                // Создание эффекта дыма
-                Instantiate(smoke, transform.position, Quaternion.identity);
-                
-                // Запуск перехода на следующую сцену
-                StartCoroutine(LoadSceneAfterDelay(0.5f)); // 0.5 секунды задержки
-            }
-            else
-            {
-
-                if (spawnRange > mediumRange && isHeeling == true)
-                {
-                    // Debug.Log("ELSE");
-                    Instantiate(heeling, heelPosition.transform.position, transform.rotation);
-                }
-
-                PlaySoundOnDestroy();
-
-                earn.OnCoinEarn();
-                Destroy(gameObject);
-
-                if (spawnDead == true)
-                {
-                    Instantiate(dead, transform.position, transform.rotation);
-
-
-                }
-                if (isDeadracer == true)
-                {
-                    Instantiate(smoke, transform.position, transform.rotation);
-                    Instantiate(smoke, transform.position, transform.rotation);
-
-
-                }
-                Instantiate(smoke, transform.position, transform.rotation);
-            }
-        }
-        if(value>=maxValue)
-        {
-            value = maxValue;
-        } 
-        if(Bar == null || health == null )
-        {
+            HandleDeath();
             return;
         }
-      Bar.fillAmount = value/maxValue;
-      health.text = value.ToString();
 
+        // Ограничение максимального здоровья
+        value = Mathf.Clamp(value, 0f, maxValue);
+
+        // Обновление UI здоровья
+        UpdateHealthUI();
+    }
+
+    private void HandleDeath()
+    {
+        if (isTransitioning) return;
+
+        isTransitioning = true;
+
+        if (gameObject.tag == "Player")
+        {
+            PlaySoundOnDestroy();
+
+            // Сохранение уровня
+            int activeSceneIndex = SceneManager.GetActiveScene().buildIndex;
+            PlayerPrefs.SetInt("SavedLevel", activeSceneIndex);
+
+            // Создание эффекта дыма
+            Instantiate(smoke, transform.position, Quaternion.identity);
+            gameObject.SetActive(false);
+            Time.timeScale = 0;
+            // Переход на следующую сцену
+            GameSceneLoader.Instance.LoadSceneAfterDelay(16, 0.3f);
+        }
+        else
+        {
+            if (spawnRange > mediumRange && isHeeling)
+            {
+                Instantiate(heeling, heelPosition.position, transform.rotation);
+            }
+
+            PlaySoundOnDestroy();
+
+            if (earn != null)
+            {
+                earn.OnCoinEarn();
+            }
+
+            if (spawnDead)
+            {
+                Instantiate(dead, transform.position, transform.rotation);
+            }
+
+            if (isDeadracer)
+            {
+                Instantiate(smoke, transform.position, transform.rotation);
+            }
+
+            Instantiate(smoke, transform.position, Quaternion.identity);
+            gameObject.SetActive(false);
+        }
+    }
+
+    private void UpdateHealthUI()
+    {
+        if (Bar != null)
+        {
+            Bar.fillAmount = value / maxValue;
+        }
+
+        if (health != null)
+        {
+            health.text = Mathf.CeilToInt(value).ToString();
+        }
     }
 
     private void PlaySoundOnDestroy()
     {
-        // Создаём временный объект для звука
+        if (shootSound == null || audioSource == null) return;
+
         GameObject tempSoundObject = new GameObject("TempSound");
         AudioSource tempAudioSource = tempSoundObject.AddComponent<AudioSource>();
 
         tempAudioSource.clip = shootSound;
-        tempAudioSource.volume = audioSource.volume; // Устанавливаем ту же громкость, что и у основного объекта
-        tempAudioSource.pitch = audioSource.pitch;   // Устанавливаем тот же тон
+        tempAudioSource.volume = audioSource.volume;
+        tempAudioSource.pitch = audioSource.pitch;
         tempAudioSource.Play();
 
-        // Удаляем временный объект после завершения звука
         Destroy(tempSoundObject, shootSound.length);
     }
-
-        private System.Collections.IEnumerator LoadSceneAfterDelay(float delay)
-        {
-            yield return new WaitForSeconds(delay);
-            SceneManager.LoadScene(8);
-        }
-    }
+}

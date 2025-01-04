@@ -21,10 +21,8 @@ public class CoinCount : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       /* if (coinValue <= 0)
-        {
-            coinValue = 0;
-        }*/
+
+        coinValue = PlayerPrefs.GetInt("Coin");
         PlayerPrefs.SetInt("Coin", coinValue);
         PlayerPrefs.Save();
         coin.text = coinValue.ToString();
