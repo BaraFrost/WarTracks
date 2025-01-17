@@ -91,8 +91,12 @@ public class BuyTank : MonoBehaviour
 
     [SerializeField]
     private AudioClip buyTankSound;
+    [SerializeField]
+    private AudioClip giveMoneySound;
+
     void Start()
     {
+       // giveMoneySound = GetComponent<AudioSource>();
         open13 = PlayerPrefs.GetInt("13Open");
         open23 = PlayerPrefs.GetInt("23Open");
         tank12Bue = PlayerPrefs.GetInt("12TankBue");
@@ -322,9 +326,11 @@ public class BuyTank : MonoBehaviour
 
         }
     }
-    public void Give100() 
+    public void Give25() 
     {
-        coinValue += 100;
+        coinValue += 25;
+        PlaySoundGive(giveMoneySound);
+      
         PlayerPrefs.SetInt("Coin", coinValue);
         PlayerPrefs.Save();
     }
@@ -355,6 +361,24 @@ public class BuyTank : MonoBehaviour
         // Настраиваем параметры звука
         tempAudioSource.clip = clip;
         tempAudioSource.volume = 0.35f; // Настройте громкость
+        tempAudioSource.spatialBlend = 0; // 2D звук
+        tempAudioSource.Play();
+
+        // Уничтожаем объект после воспроизведения звука
+        Destroy(tempSoundObject, clip.length);
+    }
+
+    private void PlaySoundGive(AudioClip clip)
+    {
+        if (clip == null) return;
+
+        // Создаём временный объект для звука
+        GameObject tempSoundObject = new GameObject("TempAudio");
+        AudioSource tempAudioSource = tempSoundObject.AddComponent<AudioSource>();
+
+        // Настраиваем параметры звука
+        tempAudioSource.clip = clip;
+        tempAudioSource.volume = 0.15f; // Настройте громкость
         tempAudioSource.spatialBlend = 0; // 2D звук
         tempAudioSource.Play();
 

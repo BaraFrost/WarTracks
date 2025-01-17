@@ -137,13 +137,13 @@ MonoBehaviour:
   stabilizationTorque: 10
   _centerOfMass: {fileID: 5404055279419498588}
   enemyPosition: {fileID: 8434718200838854390}
-  stoppingDistance: 50
-  minStopingDistance: 10
+  stoppingDistance: 10
+  minStopingDistance: 5
   collider1: {fileID: 681094703917134054}
   collider2: {fileID: 1768718147962526230}
-  targetCollider: {fileID: 0}
   _gravity: -2.5
   distance: 0
+  startDistance: 50
 --- !u!114 &9058731531151000481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,7 +259,7 @@ BoxCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0.03002645, y: 0.0814126}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 0.07, y: 0.11, z: 0.08, w: 0.08}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 0.64, y: 0.64}
     newSize: {x: 0.64, y: 0.64}
@@ -329,9 +329,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.13, y: -0.095}
+  m_Offset: {x: -0.13, y: -0.0943157}
   serializedVersion: 2
-  m_Radius: 0.12
+  m_Radius: 0.11931569
 --- !u!61 &4249973347368113471
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -364,9 +364,9 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.01793319, y: -0.12877971}
+  m_Offset: {x: 0.0326455, y: -0.13459623}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 0.07, y: 0.11, z: 0.08, w: 0.08}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 0.64, y: 0.64}
     newSize: {x: 0.64, y: 0.64}
@@ -375,7 +375,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3517372, y: 0.1324367}
+  m_Size: {x: 0.3223126, y: 0.14406979}
   m_EdgeRadius: 0
 --- !u!58 &1768718147962526230
 CircleCollider2D:

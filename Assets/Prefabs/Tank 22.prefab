@@ -135,24 +135,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shotPosition: {fileID: 5255914193088573756}
-  bullet: {fileID: 259732439777441520, guid: fc8df6879d63a7a469dc7f742f64a013, type: 3}
+  parabolicBullet: {fileID: 259732439777441520, guid: fc8df6879d63a7a469dc7f742f64a013, type: 3}
+  straightBullet: {fileID: 0}
   bulletCount: 1
   reloadTime: 2
   repeatTime: 0.1
   reload: {fileID: 0}
-  dmg: 1
-  mnAn: 0
-  mxAn: 0
-  lT: 0
-  nextFireTime: 0
   fireRate: 0
   joystick: {fileID: 0}
-  joystikShootRadius: 0.75
-  drob: 0
-  reloadTimer: 0
-  shoot: 0
+  joystickShootRadius: 0
   shootSound: {fileID: 8300000, guid: d91536fa461ac214c91b46be82d7a35e, type: 3}
   audioSource: {fileID: 0}
+  drob: 0
 --- !u!114 &1154394133105432436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,20 +159,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d297ef7d3a22c247b3b83ad94002c7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 30
   rotationRange: {x: -15, y: 20}
   rotationRanger: {x: 8, y: 43}
   rotationRangeL: {x: -38, y: -3}
-  T: 0
-  S: 0
   joystick: {fileID: 0}
   player: {fileID: 7182006991534276099}
-  rotZ: 0
-  rotX: 0
-  rotY: 0
-  absRotZ: 0
-  x: 0
-  y: 0
 --- !u!50 &6824200048249521675
 Rigidbody2D:
   serializedVersion: 4
@@ -338,7 +323,7 @@ GameObject:
   - component: {fileID: 6092147747254198611}
   m_Layer: 5
   m_Name: FriendlyTankSpawn
-  m_TagString: Untagged
+  m_TagString: dRSpawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

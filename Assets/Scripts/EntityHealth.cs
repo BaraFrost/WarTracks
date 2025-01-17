@@ -81,7 +81,7 @@ public class EntityHealth : MonoBehaviour
             // Создание эффекта дыма
             Instantiate(smoke, transform.position, Quaternion.identity);
             gameObject.SetActive(false);
-            Time.timeScale = 0;
+            //Time.timeScale = 0.5;
             // Переход на следующую сцену
             GameSceneLoader.Instance.LoadSceneAfterDelay(16, 0.3f);
         }

@@ -101,7 +101,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3109631537103630632, guid: f2a17cb0be6c2844a94cf2eb025d78fe, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.13899992
+      value: -0.114
       objectReference: {fileID: 0}
     - target: {fileID: 3109631537103630632, guid: f2a17cb0be6c2844a94cf2eb025d78fe, type: 3}
       propertyPath: m_LocalPosition.y
@@ -247,6 +247,10 @@ PrefabInstance:
       propertyPath: bulletCount
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5130081570639205619, guid: f2a17cb0be6c2844a94cf2eb025d78fe, type: 3}
+      propertyPath: parabolicBullet
+      value: 
+      objectReference: {fileID: 6026836289258942164, guid: 13551c23986206748be0eae6043cea7f, type: 3}
     - target: {fileID: 5130081570639205619, guid: f2a17cb0be6c2844a94cf2eb025d78fe, type: 3}
       propertyPath: joystikShootRadius
       value: 0.75

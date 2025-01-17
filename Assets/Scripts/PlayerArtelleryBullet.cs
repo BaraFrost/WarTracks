@@ -7,7 +7,7 @@ public class PlayerArtelleryBullet : MonoBehaviour
     [SerializeField] private float speed;
     private Rigidbody2D rb;
     [SerializeField] private float damage;
-
+    
     [Header("Время жизни снаряда")]
     [SerializeField] private float lifeTimeParabolic = 3f; // Время жизни в параболическом режиме
     [SerializeField] private float lifeTimeStraight = 5f; // Время жизни в прямом режиме
@@ -22,13 +22,15 @@ public class PlayerArtelleryBullet : MonoBehaviour
 
     [SerializeField] private WeaponController weaponController;
 
+    private WeaponController.FireMode currentFireMode;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
 
         // Находим WeaponController
         weaponController = FindObjectOfType<WeaponController>();
-
+        currentFireMode = weaponController.CurrentFireMode;
         // Устанавливаем начальное время жизни в зависимости от режима стрельбы
         SetLifeTime();
 
@@ -45,7 +47,7 @@ public class PlayerArtelleryBullet : MonoBehaviour
         }
 
         // Проверяем текущий режим стрельбы
-        if (weaponController != null && weaponController.CurrentFireMode == WeaponController.FireMode.Straight)
+        if (currentFireMode == WeaponController.FireMode.Straight)
         {
             rb.velocity = transform.right * speed;
         }
@@ -58,7 +60,7 @@ public class PlayerArtelleryBullet : MonoBehaviour
         // Устанавливаем время жизни в зависимости от текущего режима стрельбы
         if (weaponController != null)
         {
-            lifeTime = weaponController.CurrentFireMode == WeaponController.FireMode.Parabolic
+            lifeTime = currentFireMode == WeaponController.FireMode.Parabolic
                 ? lifeTimeParabolic
                 : lifeTimeStraight;
         }
@@ -70,7 +72,7 @@ public class PlayerArtelleryBullet : MonoBehaviour
 
     private void SetInitialVelocity()
     {
-        if (weaponController != null && weaponController.CurrentFireMode == WeaponController.FireMode.Parabolic)
+        if (currentFireMode == WeaponController.FireMode.Parabolic)
         {
             // Устанавливаем параболическую траекторию
             float randomAngle = UnityEngine.Random.Range(minAngle, maxAngle);

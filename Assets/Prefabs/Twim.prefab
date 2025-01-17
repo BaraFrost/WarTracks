@@ -456,13 +456,13 @@ MonoBehaviour:
   stabilizationTorque: 2
   _centerOfMass: {fileID: 3255936490241921712}
   enemyPosition: {fileID: 7465829391697681376}
-  stoppingDistance: 50
-  minStopingDistance: 10
+  stoppingDistance: 10
+  minStopingDistance: 5
   collider1: {fileID: 6637725546379095835}
   collider2: {fileID: 2849000190417344490}
-  targetCollider: {fileID: 0}
   _gravity: -2.5
   distance: 0
+  startDistance: 50
 --- !u!50 &1698929897681141520
 Rigidbody2D:
   serializedVersion: 4

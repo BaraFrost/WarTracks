@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3669310967403919942}
   m_Layer: 5
   m_Name: FriendlyTankSpawn
-  m_TagString: Untagged
+  m_TagString: dRSpawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -128,6 +128,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2445085973292296171, guid: a5ea93b33968a22448a4f4127f26650f, type: 3}
+      propertyPath: straightBullet
+      value: 
+      objectReference: {fileID: -1924601246794317882, guid: 69dab364cffe5f24fb5e6c22b7e3cb8b, type: 3}
+    - target: {fileID: 2445085973292296171, guid: a5ea93b33968a22448a4f4127f26650f, type: 3}
+      propertyPath: parabolicBullet
+      value: 
+      objectReference: {fileID: -1924601246794317882, guid: ce6463a64cce1d94da1e99ee4f3bc048, type: 3}
+    - target: {fileID: 2445085973292296171, guid: a5ea93b33968a22448a4f4127f26650f, type: 3}
       propertyPath: joystikShootRadius
       value: 0.75
       objectReference: {fileID: 0}
@@ -229,11 +237,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5255914193088573756, guid: a5ea93b33968a22448a4f4127f26650f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.4496
+      value: 0.3565
       objectReference: {fileID: 0}
     - target: {fileID: 5255914193088573756, guid: a5ea93b33968a22448a4f4127f26650f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0076
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5470521095880236572, guid: a5ea93b33968a22448a4f4127f26650f, type: 3}
       propertyPath: value

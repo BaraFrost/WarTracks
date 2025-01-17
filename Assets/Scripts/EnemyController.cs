@@ -41,6 +41,8 @@ public class EnemyController : MonoBehaviour
     private float _gravity;
     public float distance;
 
+    [SerializeField]
+    private int startDistance;
     private void Awake()
     {
         playerPosition = GetComponent<SpriteRenderer>();
@@ -87,13 +89,17 @@ public class EnemyController : MonoBehaviour
         if (distance < stoppingDistance)
         {
             angry = true;
-            movementX = -1;
+            movementX = 1;
         }
-        else if (distance > stoppingDistance || distance < minStopingDistance)
+        else if (distance < startDistance && distance > stoppingDistance)  
         {
             goBack = true;
             angry = false;
-            movementX = 0; // здесь стояла 1
+            movementX = -1; // здесь стояла 1
+        }
+        else if(distance < minStopingDistance)
+        {
+            movementX = 0;
         }
     }
 

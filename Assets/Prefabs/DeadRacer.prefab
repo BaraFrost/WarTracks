@@ -151,7 +151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coin: 0
   coinEarn: 1
-  value: {fileID: 0}
+  coinValues: 0
 --- !u!114 &6607069230286285806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,13 +185,13 @@ MonoBehaviour:
   stabilizationTorque: 10
   _centerOfMass: {fileID: 5340685461306603219}
   enemyPosition: {fileID: 1679505757452023630}
-  stoppingDistance: 50
+  stoppingDistance: 0
   minStopingDistance: 0
   collider1: {fileID: 939837095869072491}
   collider2: {fileID: 6320147351250148310}
-  targetCollider: {fileID: 0}
   _gravity: -2.5
   distance: 0
+  startDistance: 50
 --- !u!114 &77687422294631515
 MonoBehaviour:
   m_ObjectHideFlags: 0

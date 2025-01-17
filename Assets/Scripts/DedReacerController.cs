@@ -20,7 +20,7 @@ public class DedReacerController : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if ((collision.gameObject.tag == "Player")|| (collision.gameObject.tag == "Friendly"))
         {
             if (collision.gameObject.TryGetComponent<EntityHealth>(out var health))
             {

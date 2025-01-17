@@ -9,6 +9,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1875681675438033744, guid: 8c0ee0d6a4fb16c45930d0259bd896cc, type: 3}
+      propertyPath: speed
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 1875681675438033744, guid: 8c0ee0d6a4fb16c45930d0259bd896cc, type: 3}
       propertyPath: damage
       value: 50
       objectReference: {fileID: 0}
@@ -29,16 +33,16 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4556880147752490661, guid: 8c0ee0d6a4fb16c45930d0259bd896cc, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 3
+      propertyPath: m_LocalScale.y
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4556880147752490661, guid: 8c0ee0d6a4fb16c45930d0259bd896cc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.921
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4556880147752490661, guid: 8c0ee0d6a4fb16c45930d0259bd896cc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 20.418
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4556880147752490661, guid: 8c0ee0d6a4fb16c45930d0259bd896cc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -78,30 +82,54 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5019101183435746301, guid: 8c0ee0d6a4fb16c45930d0259bd896cc, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5019101183435746301, guid: 8c0ee0d6a4fb16c45930d0259bd896cc, type: 3}
       propertyPath: m_TagString
       value: PlayerBullet
       objectReference: {fileID: 0}
+    - target: {fileID: 5824569143046339719, guid: 8c0ee0d6a4fb16c45930d0259bd896cc, type: 3}
+      propertyPath: m_Radius
+      value: 0.08344746
+      objectReference: {fileID: 0}
+    - target: {fileID: 5824569143046339719, guid: 8c0ee0d6a4fb16c45930d0259bd896cc, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.00061168673
+      objectReference: {fileID: 0}
     - target: {fileID: 5930129839383282011, guid: 8c0ee0d6a4fb16c45930d0259bd896cc, type: 3}
       propertyPath: m_Mass
-      value: 0.001
+      value: 0.0001
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5930129839383282011, guid: 8c0ee0d6a4fb16c45930d0259bd896cc, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5930129839383282011, guid: 8c0ee0d6a4fb16c45930d0259bd896cc, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5930129839383282011, guid: 8c0ee0d6a4fb16c45930d0259bd896cc, type: 3}
+      propertyPath: m_GravityScale
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1875681675438033744, guid: 8c0ee0d6a4fb16c45930d0259bd896cc, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5019101183435746301, guid: 8c0ee0d6a4fb16c45930d0259bd896cc, type: 3}
       insertIndex: 1
-      addedObject: {fileID: 259732439777441520}
+      addedObject: {fileID: 7321258320267032468}
+    - targetCorrespondingSourceObject: {fileID: 5019101183435746301, guid: 8c0ee0d6a4fb16c45930d0259bd896cc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -1924601246794317882}
   m_SourcePrefab: {fileID: 100100000, guid: 8c0ee0d6a4fb16c45930d0259bd896cc, type: 3}
 --- !u!1 &4314815649655789358 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5019101183435746301, guid: 8c0ee0d6a4fb16c45930d0259bd896cc, type: 3}
   m_PrefabInstance: {fileID: 9098995384321686739}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &259732439777441520
+--- !u!114 &7321258320267032468
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -110,18 +138,39 @@ MonoBehaviour:
   m_GameObject: {fileID: 4314815649655789358}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e12704aac5257646a4e8aed266226a7, type: 3}
+  m_Script: {fileID: 11500000, guid: ff0a7143659718a45aea352dc8dc04d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 70
-  moveRight: 1
-  damage: 80
-  lifeTime: 1.1
-  minAngle: -3
-  maxAngle: 3
+  speed: 50
+  damage: 100
+  lifeTimeParabolic: 5
+  lifeTimeStraight: 1
+  minAngle: 0
+  maxAngle: 0
   smoke: {fileID: 139366, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
   wallSound: {fileID: 8300000, guid: 0f506a096c200634a9923f43b09970aa, type: 3}
   healthSound: {fileID: 8300000, guid: f9882871523a9d74fad4d228b3256003, type: 3}
-  lineRenderer: {fileID: 0}
-  maxPoints: 5
+  weaponController: {fileID: 0}
+--- !u!114 &-1924601246794317882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4314815649655789358}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e12704aac5257646a4e8aed266226a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 40
+  moveRight: 1
+  damage: 15
+  lifeTime: 0.6
+  minAngle: -10
+  maxAngle: 10
+  smoke: {fileID: 139366, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
+  wallSound: {fileID: 0}
+  healthSound: {fileID: 0}
+  maxPoints: 50
   pointSpacing: 0.1

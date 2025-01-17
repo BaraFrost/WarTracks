@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -4828940551881082475}
   - component: {fileID: 3606022753170368458}
   - component: {fileID: -7558642825937811857}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Bullet 2
   m_TagString: PlayerBullet
   m_Icon: {fileID: 0}
@@ -55,8 +55,8 @@ MonoBehaviour:
   moveRight: 1
   damage: 15
   lifeTime: 0.7
-  minAngle: -2
-  maxAngle: 6
+  minAngle: -3
+  maxAngle: 5
   smoke: {fileID: 139366, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
   wallSound: {fileID: 8300000, guid: 0f506a096c200634a9923f43b09970aa, type: 3}
   healthSound: {fileID: 8300000, guid: f9882871523a9d74fad4d228b3256003, type: 3}

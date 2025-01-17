@@ -5,98 +5,76 @@ using UnityEngine;
 
 public class WeaponController : MonoBehaviour
 {
-
     Rigidbody2D rb;
     private Vector3 gunRotation;
     [SerializeField]
-    private float rotationSpeed;
+    private Vector2 rotationRange;    // Диапазон углов для прямого положения
     [SerializeField]
-    private Vector2 rotationRange;
+    private Vector2 rotationRanger;  // Диапазон углов для верхнего положения
     [SerializeField]
-    private Vector2 rotationRanger;
-    [SerializeField]
-    private Vector2 rotationRangeL;
-    public bool T = false;
-    public bool S = false;
-    private double Y = 0.5;
-    private bool i = false;
+    private Vector2 rotationRangeL;  // Диапазон углов для нижнего положения
     public Joystick joystick;
     [SerializeField]
     private GameObject player;
-    [SerializeField]
-    private float rotZ;
-    [SerializeField]
-    private float rotX;
-    [SerializeField]
-    private float rotY;
-    [SerializeField]
-    private float absRotZ;
-    [SerializeField]
-    private float x;
-    [SerializeField]
-    private float y;
+
+    private float rotZ; // Текущий угол поворота танка
+    private float lastTurretAngle; // Сохранённый угол орудия
 
     public enum FireMode { Parabolic, Straight }
-    public FireMode CurrentFireMode { get; private set; } = FireMode.Parabolic; // Режим стрельбы
-    public float CurrentAngle { get; private set; }
-    public void ToggleFireMode()
-    {
-        // Переключение режима
-        CurrentFireMode = (CurrentFireMode == FireMode.Parabolic) ? FireMode.Straight : FireMode.Parabolic;
-    }
+    public FireMode CurrentFireMode { get; private set; } = FireMode.Parabolic;
+
     void Start()
     {
-        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
+
+        // Установка начального угла пушки
+        lastTurretAngle = 0f;
+        transform.rotation = Quaternion.Euler(0, 0, lastTurretAngle);
     }
 
-   
     void Update()
     {
+        // Получение текущего угла игрока по оси Z
+        rotZ = player.transform.rotation.eulerAngles.z;
+        if (rotZ > 180) rotZ -= 360; // Преобразование угла в диапазон [-180, 180]
 
-        rotZ = player.transform.rotation.z;
+        Vector3 moveVector;
 
-        
-
-        Vector3 joystickDirection = Quaternion.LookRotation(Vector3.forward, Vector3.up * joystick.Horizontal + Vector3.left * joystick.Vertical).eulerAngles;
-        CurrentAngle = Mathf.Clamp(joystickDirection.z < 180 ? joystickDirection.z : joystickDirection.z - 360, -180, 180);
-
-        if (joystick.Horizontal > 0 && joystick.Vertical != 0)
+        // Определение диапазона поворота башни в зависимости от угла поворота танка
+        if (rotZ > 20) // Верхний диапазон
         {
-
-
-
-            if (rotZ < 0.1 && rotZ > -0.1)
-            {
-
-                Vector3 moveVector = Quaternion.LookRotation(Vector3.forward, Vector3.up * joystick.Horizontal + Vector3.left * joystick.Vertical).eulerAngles;
-                moveVector.z = Mathf.Clamp(moveVector.z < 180 ? moveVector.z : moveVector.z - 360, rotationRange.x, rotationRange.y);
-                transform.rotation = Quaternion.Euler(moveVector);
-
-            }
-            else if (rotZ >= 0.1)
-            {
-
-                Vector3 moveVector = Quaternion.LookRotation(Vector3.forward, Vector3.up * joystick.Horizontal + Vector3.left * joystick.Vertical).eulerAngles;
-                moveVector.z = Mathf.Clamp(moveVector.z < 180 ? moveVector.z : moveVector.z - 360, rotationRanger.x, rotationRanger.y);
-                transform.rotation = Quaternion.Euler(moveVector);
-
-            }
-
-            else if (rotZ <= -0.1)
-            {
-
-                Vector3 moveVector = Quaternion.LookRotation(Vector3.forward, Vector3.up * joystick.Horizontal + Vector3.left * joystick.Vertical).eulerAngles;
-                moveVector.z = Mathf.Clamp(moveVector.z < 180 ? moveVector.z : moveVector.z - 360, rotationRangeL.x, rotationRangeL.y);
-                transform.rotation = Quaternion.Euler(moveVector);
-
-            }
-
+            moveVector = GetClampedRotation(rotationRanger);
+        }
+        else if (rotZ < -20) // Нижний диапазон
+        {
+            moveVector = GetClampedRotation(rotationRangeL);
+        }
+        else // Прямой диапазон
+        {
+            moveVector = GetClampedRotation(rotationRange);
         }
 
+        // Обновляем поворот только если джойстик используется
+        if (joystick.Horizontal != 0 || joystick.Vertical != 0)
+        {
+            lastTurretAngle = moveVector.z;
+        }
 
-
+        transform.rotation = Quaternion.Euler(0, 0, lastTurretAngle);
     }
 
+    // Метод для получения ограниченного поворота с учётом джойстика
+    private Vector3 GetClampedRotation(Vector2 range)
+    {
+        if (joystick.Horizontal != 0 || joystick.Vertical != 0)
+        {
+            Vector3 joystickDirection = Quaternion.LookRotation(Vector3.forward, Vector3.up * joystick.Horizontal + Vector3.left * joystick.Vertical).eulerAngles;
+            float joystickAngle = Mathf.Clamp(joystickDirection.z < 180 ? joystickDirection.z : joystickDirection.z - 360, range.x, range.y);
+            return new Vector3(0, 0, joystickAngle);
+        }
+
+        return new Vector3(0, 0, lastTurretAngle);
+    }
 }
 
   

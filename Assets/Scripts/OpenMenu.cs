@@ -79,7 +79,8 @@ public class OpenMenu : MonoBehaviour
         {
             enLevel = 0;
             PlayerPrefs.SetInt("EndLevel", enLevel);
-            SceneManager.LoadScene("SavedLevel");
+            int savedLevel = PlayerPrefs.GetInt("SavedLevel");
+            SceneManager.LoadScene(savedLevel);
             PlayerPrefs.Save();
         }
         nextLevel = PlayerPrefs.GetInt("NextLevel");

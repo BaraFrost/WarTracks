@@ -409,13 +409,13 @@ MonoBehaviour:
   stabilizationTorque: 10
   _centerOfMass: {fileID: 2294871874993809330}
   enemyPosition: {fileID: 2463652585980966014}
-  stoppingDistance: 75
-  minStopingDistance: 10
+  stoppingDistance: 15
+  minStopingDistance: 5
   collider1: {fileID: 8609000009018597029}
   collider2: {fileID: 7541670723637512072}
-  targetCollider: {fileID: 0}
   _gravity: -2.5
   distance: 0
+  startDistance: 50
 --- !u!114 &9114226219951234686
 MonoBehaviour:
   m_ObjectHideFlags: 0

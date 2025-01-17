@@ -774,24 +774,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shotPosition: {fileID: 6422093500241648792}
-  bullet: {fileID: 6026836289258942164, guid: e454b82dce94961498625dc8a22a1f72, type: 3}
+  parabolicBullet: {fileID: 6026836289258942164, guid: e454b82dce94961498625dc8a22a1f72, type: 3}
+  straightBullet: {fileID: 0}
   bulletCount: 4
   reloadTime: 1.5
   repeatTime: 0.2
   reload: {fileID: 0}
-  dmg: 1
-  mnAn: 0
-  mxAn: 0
-  lT: 0
-  nextFireTime: 0
   fireRate: 0
   joystick: {fileID: 0}
-  joystikShootRadius: 0.75
-  drob: 0
-  reloadTimer: 0
-  shoot: 0
+  joystickShootRadius: 0
   shootSound: {fileID: 8300000, guid: d91536fa461ac214c91b46be82d7a35e, type: 3}
   audioSource: {fileID: 0}
+  drob: 0
 --- !u!114 &4390888162772550895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -804,20 +798,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d297ef7d3a22c247b3b83ad94002c7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 30
   rotationRange: {x: -10, y: 45}
   rotationRanger: {x: 16, y: 71}
   rotationRangeL: {x: -36, y: 19}
-  T: 0
-  S: 0
   joystick: {fileID: 0}
   player: {fileID: 1991761921517359718}
-  rotZ: 0
-  rotX: 0
-  rotY: 0
-  absRotZ: 0
-  x: 0
-  y: 0
 --- !u!50 &7840106811156097853
 Rigidbody2D:
   serializedVersion: 4

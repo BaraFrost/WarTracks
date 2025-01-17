@@ -43,6 +43,8 @@ public class PlayerController : MonoBehaviour
     private int startSpeed;
     private bool keyboardInputStarted;
 
+
+
     // Второй коллайдер
 
     [SerializeField] 

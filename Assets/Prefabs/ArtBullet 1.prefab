@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7690585112944168633}
   - component: {fileID: -5832094337938327298}
   - component: {fileID: -6400127118804620671}
-  m_Layer: 6
+  m_Layer: 13
   m_Name: ArtBullet 1
   m_TagString: PlayerBullet
   m_Icon: {fileID: 0}
@@ -32,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalScale: {x: 10, y: 10, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}

@@ -5,75 +5,45 @@ using UnityEngine.UI;
 
 public class PlayerShoot : MonoBehaviour
 {
-    [SerializeField]
-    private Transform shotPosition;
-    [SerializeField]
-    private Bullet bullet;
-    [SerializeField]
-    private int bulletCount;
+    [SerializeField] private Transform shotPosition; // Позиция стрельбы
+    [SerializeField] private Bullet parabolicBullet; // Снаряд для параболической стрельбы
+    [SerializeField] private Bullet straightBullet;  // Снаряд для прямой стрельбы
+    [SerializeField] private int bulletCount;
 
-    [SerializeField]
-    private float reloadTime;
-    [SerializeField]
-    private float repeatTime;
-    
-    private Bullet damage;
-    private Bullet minAngle;
-    private Bullet maxAngle;
-    private Bullet lifeTime;
+    [SerializeField] private float reloadTime;
+    [SerializeField] private float repeatTime;
 
-    public Image reload;
+    [SerializeField] private Image reload;
 
-    [SerializeField]
-    private float dmg;
-    [SerializeField]
-    private int mnAn;
-    [SerializeField]
-    private int mxAn;
-    [SerializeField]
-    private int lT;
-    [SerializeField]
-    private float nextFireTime;
-    [SerializeField]
-    private float fireRate;
-    [SerializeField]
-    private Joystick joystick;
-    [SerializeField]
-    private float joystikShootRadius;
-    [SerializeField]
-    private bool drob=false;
-    [SerializeField]
+    [SerializeField] private float fireRate;
+    [SerializeField] private Joystick joystick;
+    [SerializeField] private float joystickShootRadius;
+    [SerializeField] private AudioClip shootSound;
+    [SerializeField] private AudioSource audioSource;
+
     private float reloadTimer;
-    [SerializeField]
     private bool shoot;
+    [SerializeField] private bool drob; // Условие для стрельбы дробью
 
-    [SerializeField]
-    private AudioClip shootSound;
-    [SerializeField]
-    private AudioSource audioSource;
-    void Start()
+    // Перечисление для режима стрельбы
+    public enum FireMode { Parabolic, Straight }
+    public FireMode CurrentFireMode { get; private set; } = FireMode.Parabolic;
+
+    private void Start()
     {
-        StartCoroutine(Shoot());
-        damage = GetComponent<Bullet>();
-        minAngle =GetComponent<Bullet>();
-        maxAngle = GetComponent<Bullet>();
-        lifeTime = GetComponent<Bullet>();
-        //dmg = Bullet.damage;
-        nextFireTime = fireRate;
+        StartCoroutine(ShootCoroutine());
         reloadTimer = reloadTime;
         reload.fillAmount = reloadTimer / reloadTime;
-
         audioSource = GetComponent<AudioSource>();
     }
+
     private void Update()
     {
         if (shoot)
         {
-            // Уменьшаем таймер и обновляем fillAmount изображения
             reloadTimer -= Time.deltaTime;
             reload.fillAmount = reloadTimer / reloadTime;
 
-            // Если перезарядка завершена, сбрасываем состояние
             if (reloadTimer <= 0)
             {
                 shoot = false;
@@ -83,68 +53,53 @@ public class PlayerShoot : MonoBehaviour
         }
     }
 
-    public void StartReload()
+    public void ToggleFireMode()
     {
-        if (!shoot)
-        {
-            shoot = true;
-            reloadTimer = reloadTime;
-        }
-    }
-    public void OnFireDown()
-    {
-        for (int x = bulletCount; x > 0; x--)
-        {
-            nextFireTime -= Time.deltaTime;
-            if (nextFireTime <= 0)
-            {
-                Instantiate(bullet, shotPosition.transform.position, transform.rotation);
-                nextFireTime = fireRate;
-            }
-        }
-
+        // Переключение режима
+        CurrentFireMode = (CurrentFireMode == FireMode.Parabolic) ? FireMode.Straight : FireMode.Parabolic;
     }
 
-    public void OnFireUp()
-    {
-        nextFireTime -= Time.deltaTime;
-    }
-    private IEnumerator Shoot()
+    private IEnumerator ShootCoroutine()
     {
         while (true)
-        { 
-            
-
-            if (Input.GetKeyDown(KeyCode.Space)||joystick.Direction.magnitude>joystikShootRadius && joystick.Horizontal>0)
+        {
+            if (Input.GetKeyDown(KeyCode.Space) || (joystick.Direction.magnitude > joystickShootRadius && joystick.Horizontal > 0))
             {
-
-                for (int x = bulletCount; x > 0; x--)
+                for (int i = 0; i < bulletCount; i++)
                 {
-                    if (drob == true)
-                    {
-                    Instantiate(bullet, shotPosition.transform.position, transform.rotation);
-                        //audioSource.PlayOneShot(shootSound);
-                        Instantiate(bullet, shotPosition.transform.position, transform.rotation);
-                       // audioSource.PlayOneShot(shootSound);
-                        Instantiate(bullet, shotPosition.transform.position, transform.rotation);
-                        //audioSource.PlayOneShot(shootSound);
-                        Instantiate(bullet, shotPosition.transform.position, transform.rotation);
-                       // audioSource.PlayOneShot(shootSound);
-
-                    }
-                    Instantiate(bullet, shotPosition.transform.position, transform.rotation);
+                    ShootBullet();
                     audioSource.PlayOneShot(shootSound);
                     yield return new WaitForSeconds(repeatTime);
-                    shoot = true;
-                    reloadTimer = reloadTime;
                 }
+
+                shoot = true;
+                reloadTimer = reloadTime;
                 yield return new WaitForSeconds(reloadTime);
             }
             yield return null;
+        }
+    }
 
-           
+    private void ShootBullet()
+    {
+        // Выбор типа снаряда на основе текущего режима стрельбы
+        Bullet bulletToShoot = (CurrentFireMode == FireMode.Parabolic) ? parabolicBullet : straightBullet;
 
+        if (bulletToShoot == null)
+        {
+            return;
+        }
 
+        // Создание основного снаряда
+        Instantiate(bulletToShoot, shotPosition.position, shotPosition.rotation);
+
+        // Проверка на условие "дробь" и создание дополнительных снарядов
+        if (drob)
+        {
+            Instantiate(parabolicBullet, shotPosition.position, Quaternion.Euler(shotPosition.eulerAngles ));
+            Instantiate(parabolicBullet, shotPosition.position, Quaternion.Euler(shotPosition.eulerAngles ));
+            Instantiate(parabolicBullet, shotPosition.position, Quaternion.Euler(shotPosition.eulerAngles ));
+            Instantiate(parabolicBullet, shotPosition.position, Quaternion.Euler(shotPosition.eulerAngles ));
         }
     }
 }

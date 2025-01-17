@@ -260,7 +260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55c7eda61c658164ab6cd2a8c2b11526, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 10
+  value: 11
   normValue: 0
 --- !u!50 &8754607544768324990
 Rigidbody2D:
@@ -348,7 +348,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 50
   smoke: {fileID: 6813416509558619124, guid: 3b7f2c753d435d647a80f1f047a113e3, type: 3}
-  lifeTime: 8
+  lifeTime: 4
 --- !u!82 &7157668569132943822
 AudioSource:
   m_ObjectHideFlags: 0
