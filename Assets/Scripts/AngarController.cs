@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using PlayerPrefs = RedefineYG.PlayerPrefs;
 
 public class AngarController : MonoBehaviour
 {

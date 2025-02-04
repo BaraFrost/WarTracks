@@ -3,18 +3,20 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using YG;
+using PlayerPrefs = RedefineYG.PlayerPrefs;
 
 public class BuyTank : MonoBehaviour
 {
     [SerializeField]
     private int coinValue;
-    
+
     public int tank12Bue = 0;
 
     public int tank22Bue = 0;
 
     public int tank13Bue = 0;
-    
+
     public int tank23Bue = 0;
 
     [SerializeField]
@@ -49,9 +51,9 @@ public class BuyTank : MonoBehaviour
     [SerializeField]
     private int coin;
     [SerializeField]
-    private int open13=0;
+    private int open13 = 0;
     [SerializeField]
-    private int open23=0;
+    private int open23 = 0;
 
     [SerializeField]
     private Image tank12;
@@ -70,7 +72,7 @@ public class BuyTank : MonoBehaviour
     private int shadow22 = 0;
     [SerializeField]
     private int tank22ShadowOff;
-   
+
     [SerializeField]
     private Image tank13;
     [SerializeField]
@@ -96,7 +98,7 @@ public class BuyTank : MonoBehaviour
 
     void Start()
     {
-       // giveMoneySound = GetComponent<AudioSource>();
+        // giveMoneySound = GetComponent<AudioSource>();
         open13 = PlayerPrefs.GetInt("13Open");
         open23 = PlayerPrefs.GetInt("23Open");
         tank12Bue = PlayerPrefs.GetInt("12TankBue");
@@ -162,12 +164,15 @@ public class BuyTank : MonoBehaviour
         shadow22 = PlayerPrefs.GetInt("22ShadowOff");
         shadow23 = PlayerPrefs.GetInt("23ShadowOff");
         coinValue = PlayerPrefs.GetInt("Coin");
+
+        
+
         if (shadow12 == 1)
         {
             tank12.color = new Color(1, 1, 1, 1);
             tank121.color = new Color(1, 1, 1, 1);
         }
-        else if(shadow12 == 0)
+        else if (shadow12 == 0)
         {
             tank12.color = new Color(0.4339623f, 0.4339623f, 0.4339623f, 1f);
             tank121.color = new Color(0.4339623f, 0.4339623f, 0.4339623f, 1f);
@@ -208,7 +213,7 @@ public class BuyTank : MonoBehaviour
             value12Tank.SetActive(false);
             value12TankImage.SetActive(false);
         }
-        if(tank22Bue==1)
+        if (tank22Bue == 1)
         {
             value22Tank.SetActive(false);
             value22TankImage.SetActive(false);
@@ -231,56 +236,61 @@ public class BuyTank : MonoBehaviour
         coinRemains = coin - tankPrice;
 
 
-        
+
     }
     public void On12TankBue()
     {
         tankPrice = price12;
         UpdateMoney();
-        if(tank12Bue==0 && coinRemains >=0)
+        if (tank12Bue == 0 && coinRemains >= 0)
         {
-            
+
             shadow12 = 1;
             PlayerPrefs.SetInt("12ShadowOff", shadow12);
-            PlayerPrefs.Save();
             tank12.color = new Color(1, 1, 1, 1);
             tank121.color = new Color(1, 1, 1, 1);
             tank12Bue = 1;
             coinValue -= price12;
             PlayerPrefs.SetInt("Coin", coinValue);
-            PlayerPrefs.Save();
             PlayerPrefs.SetInt("12TankBue", tank12Bue);
-            PlayerPrefs.Save();
             open13 = 1;
             PlayerPrefs.SetInt("13Open", open13);
             PlayerPrefs.Save();
             PlaySound(buyTankSound);
+
+            YG2.MetricaSend("coin_balance", new Dictionary<string, string>
+        {
+            { "12TankBue", tank12Bue.ToString() }
+        });
         }
     }
     public void On22TankBue()
     {
 
-        
+
         tankPrice = price22;
         UpdateMoney();
-        if (tank22Bue == 0 && coinRemains>=0)
+        if (tank22Bue == 0 && coinRemains >= 0)
         {
             shadow22 = 1;
             PlayerPrefs.SetInt("22ShadowOff", shadow22);
-            PlayerPrefs.Save();
             tank22.color = new Color(1, 1, 1, 1);
             tank221.color = new Color(1, 1, 1, 1);
             coinValue -= price22;
             PlayerPrefs.SetInt("Coin", coinValue);
-            PlayerPrefs.Save();
             tank22Bue = 1;
             PlayerPrefs.SetInt("22TankBue", tank22Bue);
-            PlayerPrefs.Save();
-            open23= 1;
+            open23 = 1;
             PlayerPrefs.SetInt("23Open", open23);
             PlayerPrefs.Save();
             value22Tank.SetActive(false);
             PlaySound(buyTankSound);
+            YG2.MetricaSend("coin_balance", new Dictionary<string, string>
+        {
+            
+            { "22TankBue", tank22Bue.ToString() }
+            
+        });
         }
     }
     public void On13TankBue()
@@ -288,20 +298,25 @@ public class BuyTank : MonoBehaviour
 
         tankPrice = price13;
         UpdateMoney();
-        if (tank13Bue == 0 && coinRemains >= 0 && open13==1)
+        if (tank13Bue == 0 && coinRemains >= 0 && open13 == 1)
         {
             shadow13 = 1;
             PlayerPrefs.SetInt("13ShadowOff", shadow13);
-            PlayerPrefs.Save();
             tank13.color = new Color(1, 1, 1, 1);
             tank131.color = new Color(1, 1, 1, 1);
             coinValue -= price13;
             PlayerPrefs.SetInt("Coin", coinValue);
-            PlayerPrefs.Save();
             tank13Bue = 1;
             PlayerPrefs.SetInt("13TankBue", tank13Bue);
             PlayerPrefs.Save();
             PlaySound(buyTankSound);
+
+            YG2.MetricaSend("coin_balance", new Dictionary<string, string>
+        {
+            
+            { "13TankBue", tank13Bue.ToString() }
+            
+        });
         }
     }
     public void On23TankBue()
@@ -309,28 +324,32 @@ public class BuyTank : MonoBehaviour
 
         tankPrice = price23;
         UpdateMoney();
-        if (tank23Bue == 0 && coinRemains >= 0 && open23==1)
+        if (tank23Bue == 0 && coinRemains >= 0 && open23 == 1)
         {
             shadow23 = 1;
             PlayerPrefs.SetInt("23ShadowOff", shadow23);
-            PlayerPrefs.Save();
             tank23.color = new Color(1, 1, 1, 1);
             tank231.color = new Color(1, 1, 1, 1);
             coinValue -= price23;
             PlayerPrefs.SetInt("Coin", coinValue);
-            PlayerPrefs.Save();
             tank23Bue = 1;
             PlayerPrefs.SetInt("23TankBue", tank23Bue);
             PlayerPrefs.Save();
             PlaySound(buyTankSound);
 
+
+            YG2.MetricaSend("coin_balance", new Dictionary<string, string>
+        {
+            
+            { "23TankBue", tank23Bue.ToString() }
+        });
         }
     }
-    public void Give25() 
+    public void Give25()
     {
         coinValue += 25;
         PlaySoundGive(giveMoneySound);
-      
+
         PlayerPrefs.SetInt("Coin", coinValue);
         PlayerPrefs.Save();
     }

@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using YG;
+using PlayerPrefs = RedefineYG.PlayerPrefs;
 
 public class PlaneCount : MonoBehaviour
 {
@@ -18,8 +20,9 @@ public class PlaneCount : MonoBehaviour
     void Update()
     {
         planeCount = PlayerPrefs.GetInt("Plane");
-        PlayerPrefs.SetInt("Plane", planeCount);
-        PlayerPrefs.Save();
+        
         planeScale.text = planeCount.ToString();
+
+        
     }
 }

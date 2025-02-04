@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using YG;
+using PlayerPrefs = RedefineYG.PlayerPrefs;
 
 public class SupportTankCount : MonoBehaviour
 {
@@ -18,8 +20,9 @@ public class SupportTankCount : MonoBehaviour
     void Update()
     {
         sTCount = PlayerPrefs.GetInt("ST");
-        PlayerPrefs.SetInt("ST", sTCount);
-        PlayerPrefs.Save();
+        
         sTScale.text = sTCount.ToString();
+
+       
     }
 }

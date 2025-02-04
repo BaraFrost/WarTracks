@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using PlayerPrefs = RedefineYG.PlayerPrefs;
 
 public class ChooseTank : MonoBehaviour
 {
@@ -78,37 +79,129 @@ public class ChooseTank : MonoBehaviour
     public void OnTank1BottonDown()
     {
         tankNumber = 1;
-        
+        tank2.SetActive(false);
+        tank22.SetActive(false);
+        tank12.SetActive(false);
+        tank23.SetActive(false);
+        tank13.SetActive(false);
+        PlayerPrefs.DeleteKey("TankID");
+        PlayerPrefs.SetInt("TankID", tankNumber);
+        PlayerPrefs.Save();
+        //Debug.Log(tank);
+        if (tankViev == true)
+        {
+            tank1.SetActive(true);
+        }
+        tChoose = 1;
     }
     public void OnTank2BottonDown()
     {
         tankNumber = 2;
-        
-       
+
+        tank1.SetActive(false);
+        tank22.SetActive(false);
+        tank12.SetActive(false);
+        tank23.SetActive(false);
+        tank13.SetActive(false);
+        PlayerPrefs.DeleteKey("TankID");
+        PlayerPrefs.SetInt("TankID", tankNumber);
+        PlayerPrefs.Save();
+        //Debug.Log(tank);
+        if (tankViev == true)
+        {
+            tank2.SetActive(true);
+        }
+        tChoose = 2;
     }
     public void OnTank12BottonDown()
     {
         tankNumber = 12;
-        
 
+        if (tank == 12 && buyTank.tank12Bue == 1)
+        {
+            tank1.SetActive(false);
+            tank2.SetActive(false);
+            tank22.SetActive(false);
+            tank23.SetActive(false);
+            tank13.SetActive(false);
+            PlayerPrefs.DeleteKey("TankID");
+            PlayerPrefs.SetInt("TankID", tankNumber);
+            PlayerPrefs.Save();
+            if (tankViev == true)
+            {
+                tank12.SetActive(true);
+            }
+
+
+        }
     }
     public void OnTank22BottonDown()
     {
         tankNumber = 22;
-        
 
+        if (tank == 22 && buyTank.tank22Bue == 1)
+        {
+            tank1.SetActive(false);
+            tank2.SetActive(false);
+            tank12.SetActive(false);
+            tank23.SetActive(false);
+            tank13.SetActive(false);
+            PlayerPrefs.DeleteKey("TankID");
+            PlayerPrefs.SetInt("TankID", tankNumber);
+            PlayerPrefs.Save();
+            //Debug.Log(tank);
+            if (tankViev == true)
+            {
+                tank22.SetActive(true);
+            }
+
+
+        }
     }
     public void OnTank13BottonDown()
     {
         tankNumber = 13;
 
+        if (tank == 13 && buyTank.tank13Bue == 1)
+        {
+            tank1.SetActive(false);
+            tank2.SetActive(false);
+            tank12.SetActive(false);
+            tank22.SetActive(false);
+            tank23.SetActive(false);
+            PlayerPrefs.DeleteKey("TankID");
+            PlayerPrefs.SetInt("TankID", tankNumber);
+            PlayerPrefs.Save();
+            if (tankViev == true)
+            {
+                tank13.SetActive(true);
+            }
 
+
+        }
     }
     public void OnTank23BottonDown()
     {
         tankNumber = 23;
 
+        if (tank == 23 && buyTank.tank23Bue == 1)
+        {
+            tank1.SetActive(false);
+            tank2.SetActive(false);
+            tank12.SetActive(false);
+            tank13.SetActive(false);
+            tank22.SetActive(false);
+            PlayerPrefs.DeleteKey("TankID");
+            PlayerPrefs.SetInt("TankID", tankNumber);
+            PlayerPrefs.Save();
+            //Debug.Log(tank);
+            if (tankViev == true)
+            {
+                tank23.SetActive(true);
+            }
 
+
+        }
     }
     public void OnDestroyButton()
     {
@@ -118,112 +211,7 @@ public class ChooseTank : MonoBehaviour
     {
         tank = tankNumber;
 
-
-        if (tank == 1)
-        {
-            tank2.SetActive(false);
-            tank22.SetActive(false);
-            tank12.SetActive(false);
-            tank23.SetActive(false);
-            tank13.SetActive(false);
-            PlayerPrefs.DeleteKey("TankID");
-            PlayerPrefs.SetInt("TankID", tank);
-            PlayerPrefs.Save();
-            //Debug.Log(tank);
-            if (tankViev == true)
-            {
-                tank1.SetActive(true);
-            }
-            tChoose = 1;
-        }
-        if (tank==2)//&& buyTank.tank22Bue == 1
-        {
-            tank1.SetActive(false);
-            tank22.SetActive(false);
-            tank12.SetActive(false);
-            tank23.SetActive(false);
-            tank13.SetActive(false);
-            PlayerPrefs.DeleteKey("TankID");
-            PlayerPrefs.SetInt("TankID", tank);
-            PlayerPrefs.Save();
-            //Debug.Log(tank);
-            if (tankViev == true)
-            {
-                tank2.SetActive(true);
-            }
-            tChoose = 2;
-        }
-        if (tank == 12 && buyTank.tank12Bue == 1)
-        {
-            tank1.SetActive(false);
-            tank2.SetActive(false);
-            tank22.SetActive(false);
-            tank23.SetActive(false);
-            tank13.SetActive(false);
-            PlayerPrefs.DeleteKey("TankID");
-            PlayerPrefs.SetInt("TankID", tank);
-            PlayerPrefs.Save();
-            if (tankViev == true)
-            {
-                tank12.SetActive(true);
-            }
-            
-
-        }
-        if (tank == 22 && buyTank.tank22Bue == 1)
-        {
-            tank1.SetActive(false);
-            tank2.SetActive(false);
-            tank12.SetActive(false);
-            tank23.SetActive(false);
-            tank13.SetActive(false);
-            PlayerPrefs.DeleteKey("TankID");
-            PlayerPrefs.SetInt("TankID", tank);
-            PlayerPrefs.Save();
-            //Debug.Log(tank);
-            if (tankViev == true)
-            {
-                tank22.SetActive(true);
-            }
-            
-
-        }
-        if (tank == 13 && buyTank.tank13Bue == 1)
-        {
-            tank1.SetActive(false);
-            tank2.SetActive(false);
-            tank12.SetActive(false);
-            tank22.SetActive(false);
-            tank23.SetActive(false);
-            PlayerPrefs.DeleteKey("TankID");
-            PlayerPrefs.SetInt("TankID", tank);
-            PlayerPrefs.Save();
-            if (tankViev == true)
-            {
-                tank13.SetActive(true);
-            }
-            
-
-        }
-        if (tank == 23 && buyTank.tank23Bue == 1)
-        {
-            tank1.SetActive(false);
-            tank2.SetActive(false);
-            tank12.SetActive(false);
-            tank13.SetActive(false);
-            tank22.SetActive(false);
-            PlayerPrefs.DeleteKey("TankID");
-            PlayerPrefs.SetInt("TankID", tank);
-            PlayerPrefs.Save();
-            //Debug.Log(tank);
-            if (tankViev == true)
-            {
-                tank23.SetActive(true);
-            }
-           
-
-        }
-        if (newGame==true)
+        if (newGame)
         {
             if(tChoose==2)
             {

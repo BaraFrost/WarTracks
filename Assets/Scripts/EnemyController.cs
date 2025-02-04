@@ -11,7 +11,6 @@ public class EnemyController : MonoBehaviour
     private float positionOfPatrol;
     [SerializeField]
     private Transform point;
-    bool moveingRight;
     private SpriteRenderer playerPosition;
     [SerializeField]
     private Rigidbody2D rb;
@@ -27,8 +26,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     private float stoppingDistance;
     private SpriteRenderer sprite;
-    bool angry = false;
-    bool goBack = false;
+    
     [SerializeField]
     private float minStopingDistance;
     [SerializeField]
@@ -88,13 +86,10 @@ public class EnemyController : MonoBehaviour
 
         if (distance < stoppingDistance)
         {
-            angry = true;
             movementX = 1;
         }
         else if (distance < startDistance && distance > stoppingDistance)  
         {
-            goBack = true;
-            angry = false;
             movementX = -1; // здесь стояла 1
         }
         else if(distance < minStopingDistance)

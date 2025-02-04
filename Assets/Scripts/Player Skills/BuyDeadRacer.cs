@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using YG;
+using PlayerPrefs = RedefineYG.PlayerPrefs;
 
 public class BuyDeadRacer : MonoBehaviour
 {
@@ -13,11 +15,7 @@ public class BuyDeadRacer : MonoBehaviour
     [SerializeField]
     private AudioClip buyDRSound;
 
-    void Start()
-    {
-        dRCount = PlayerPrefs.GetInt("DR");
-        coinCounter = PlayerPrefs.GetInt("Coin");
-    }
+   
 
     public void DRBuy()
     {
@@ -27,9 +25,14 @@ public class BuyDeadRacer : MonoBehaviour
             PlaySound(buyDRSound);
             coinCounter -= dRPrice;
             PlayerPrefs.SetInt("DR", dRCount);
-            PlayerPrefs.Save();
+            
             PlayerPrefs.SetInt("Coin", coinCounter);
             PlayerPrefs.Save();
+
+            YG2.MetricaSend("coin_balance", new Dictionary<string, string>
+        {
+            { "DR", dRCount.ToString() }
+        });
         }
     }
 

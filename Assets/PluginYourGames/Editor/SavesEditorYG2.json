@@ -1,0 +1,31 @@
+{
+  "stringKeys": [],
+  "stringValues": [],
+  "floatKeys": [],
+  "floatValues": [],
+  "intKeys": [
+    "Bomb",
+    "DR",
+    "Heel",
+    "TankID",
+    "SavedLevel",
+    "Coin"
+  ],
+  "intValues": [
+    0,
+    4,
+    5,
+    1,
+    1,
+    16
+  ],
+  "intExample": 5,
+  "strExample": "Hello!",
+  "boolExample": [
+    false,
+    false,
+    false,
+    false
+  ],
+  "idSave": 14984
+}

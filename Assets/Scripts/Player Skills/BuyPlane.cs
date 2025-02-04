@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using YG;
+using PlayerPrefs = RedefineYG.PlayerPrefs;
 
 public class BuyPlane : MonoBehaviour
 {
@@ -27,9 +29,13 @@ public class BuyPlane : MonoBehaviour
             PlaySound(buyPlaneSound);
             coinCounter -= planePrice;
             PlayerPrefs.SetInt("Plane", planeCount);
-            PlayerPrefs.Save();
             PlayerPrefs.SetInt("Coin", coinCounter);
             PlayerPrefs.Save();
+
+            YG2.MetricaSend("coin_balance", new Dictionary<string, string>
+        {
+            { "plane", planeCount.ToString() }
+        });
         }
     }
 

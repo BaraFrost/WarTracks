@@ -16,8 +16,7 @@ public class BossController : MonoBehaviour
     [SerializeField]
     private float stoppingDistance;
     private SpriteRenderer sprite;
-    bool angry = false;
-    bool goBack = false;
+   
     [SerializeField]
     private float minStopingDistance;
     [SerializeField]
@@ -69,13 +68,11 @@ public class BossController : MonoBehaviour
 
         if (distance < stoppingDistance)
         {
-            angry = true;
             movementX = -1;
         }
         if (distance > stoppingDistance || distance < minStopingDistance)
         {
-            goBack = true;
-            angry = false;
+            
             movementX = 0;
         }
     }

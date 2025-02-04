@@ -28,8 +28,7 @@ public class Bullet : MonoBehaviour
   
     [SerializeField]
     private int maxPoints = 50; // Максимальное количество точек
-    [SerializeField]
-    private float pointSpacing = 0.1f; // Интервал между точками
+    
 
     private List<Vector3> trajectoryPoints = new List<Vector3>();
 

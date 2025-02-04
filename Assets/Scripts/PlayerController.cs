@@ -33,8 +33,7 @@ public class PlayerController : MonoBehaviour
     private float maxTiltAngle=10f; // Максимальный угол наклона танка в градусах
     [SerializeField]
     private float stabilizationTorque=2f; // Скорость стабилизации наклона танка
-    [SerializeField]
-    private float maxSpeed = 5f;
+    
     [SerializeField]
     private Collider2D collider1;
     [SerializeField]// Первый коллайдер

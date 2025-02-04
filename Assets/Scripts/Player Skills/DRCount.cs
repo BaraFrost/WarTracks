@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using YG;
+using PlayerPrefs = RedefineYG.PlayerPrefs;
 
 public class DRCount : MonoBehaviour
 {
@@ -18,8 +20,9 @@ public class DRCount : MonoBehaviour
     void Update()
     {
         dRCount = PlayerPrefs.GetInt("DR");
-        PlayerPrefs.SetInt("DR", dRCount);
-        PlayerPrefs.Save();
+       
         dRScale.text = dRCount.ToString();
+
+     
     }
 }

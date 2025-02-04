@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using YG;
+using PlayerPrefs = RedefineYG.PlayerPrefs;
 
 public class BuySupportTank : MonoBehaviour
 {
@@ -13,11 +15,7 @@ public class BuySupportTank : MonoBehaviour
     [SerializeField]
     private AudioClip buySTSound;
 
-    void Start()
-    {
-        sTCount = PlayerPrefs.GetInt("ST");
-        coinCounter = PlayerPrefs.GetInt("Coin");
-    }
+    
 
     public void STBuy()
     {
@@ -27,9 +25,13 @@ public class BuySupportTank : MonoBehaviour
             PlaySound(buySTSound);
             coinCounter -= sTPrice;
             PlayerPrefs.SetInt("ST", sTCount);
-            PlayerPrefs.Save();
             PlayerPrefs.SetInt("Coin", coinCounter);
             PlayerPrefs.Save();
+
+            YG2.MetricaSend("coin_balance", new Dictionary<string, string>
+        {
+            { "ST", sTCount.ToString() }
+        });
         }
     }
 

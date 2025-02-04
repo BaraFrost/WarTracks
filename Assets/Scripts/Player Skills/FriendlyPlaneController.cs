@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FriendlyPlaneController : MonoBehaviour
 {
+
     [SerializeField]
     private EntitySpeed speed;
 
@@ -15,8 +16,12 @@ public class FriendlyPlaneController : MonoBehaviour
 
     void Start()
     {
+        GameObject player = GameObject.FindWithTag("Player");
         // Установка случайного значения для spawnInterval
-
+        if (player != null)
+        {
+            speed = player.GetComponent<EntitySpeed>();
+        }
 
     }
 

@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using PlayerPrefs = RedefineYG.PlayerPrefs;
 
 public class EntityHealth : MonoBehaviour
 {

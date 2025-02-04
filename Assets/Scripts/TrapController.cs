@@ -18,9 +18,9 @@ public class TrapController : MonoBehaviour
    
     public void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.TryGetComponent<EntitySpeed>(out var speed))
+        if (collision.gameObject.TryGetComponent<EntityHealth>(out var health))
         {
-            speed.value = 3;
+            health.value -= 100 ;
         }
 
     }

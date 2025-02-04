@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using YG;
+using PlayerPrefs = RedefineYG.PlayerPrefs;
 
 public class BuyHeels : MonoBehaviour
 {
@@ -13,11 +15,7 @@ public class BuyHeels : MonoBehaviour
     [SerializeField]
     private AudioClip buyHeelSound;
 
-    void Start()
-    {
-        heelCount = PlayerPrefs.GetInt("Heel");
-        coinCounter = PlayerPrefs.GetInt("Coin");
-    }
+    
 
     public void HeelBuy()
     {
@@ -27,9 +25,13 @@ public class BuyHeels : MonoBehaviour
             PlaySound(buyHeelSound);
             coinCounter -= heelPrice;
             PlayerPrefs.SetInt("Heel", heelCount);
-            PlayerPrefs.Save();
             PlayerPrefs.SetInt("Coin", coinCounter);
             PlayerPrefs.Save();
+
+            YG2.MetricaSend("coin_balance", new Dictionary<string, string>
+        {
+            { "heel", heelCount.ToString() }
+        });
         }
     }
 

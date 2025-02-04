@@ -48,7 +48,7 @@ public class Heeling : MonoBehaviour
             // Уничтожаем основной объект
             Destroy(gameObject);
         }
-        else if (collision.gameObject.CompareTag("Wall"))
+        else if ((collision.gameObject.CompareTag("Wall"))|| (collision.gameObject.CompareTag("Player")))
         {
             // Остановка объекта при столкновении со стеной
             StopMovement();

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using YG;
+using PlayerPrefs = RedefineYG.PlayerPrefs;
 
 public class CoinEarn : MonoBehaviour
 {
@@ -21,6 +23,11 @@ public class CoinEarn : MonoBehaviour
        coinValues += coinEarn;
         PlayerPrefs.SetInt("Coin", coinValues);
         PlayerPrefs.Save();
+
+        YG2.MetricaSend("coin_balance", new Dictionary<string, string>
+        {
+            { "total_coins", coinValues.ToString() }
+        });
     }
 
     // Update is called once per frame

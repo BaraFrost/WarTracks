@@ -519,6 +519,7 @@ MonoBehaviour:
   maxAngle: 0
   bullet: {fileID: 1033841728215470640, guid: df062ac15ce933d4d906567a42f6ca58, type: 3}
   shotPosition: {fileID: 5439344770196121595}
+  shotAngle: 45
 --- !u!4 &5439344770196121595 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7532555495740349365, guid: 0511b6f56951fc1429f52632cc1716c9, type: 3}
