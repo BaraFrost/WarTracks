@@ -9,15 +9,11 @@ public class ShowAdForCoins : MonoBehaviour
     public int rewardAmount = 25; // Количество монет за просмотр рекламы
     private int coinValue;
 
-    void Start()
-    {
-        // Загружаем количество монет из PlayerPrefs
-        coinValue = PlayerPrefs.GetInt("Coin", 0);
-    }
-
+    
     // Метод для вызова видео рекламы
     public void ShowRewardedAd()
     {
+
         YG2.RewardedAdvShow(rewardID, () =>
         {
             OnRewarded();
@@ -28,6 +24,8 @@ public class ShowAdForCoins : MonoBehaviour
 
     private void OnRewarded()
     {
+        coinValue = PlayerPrefs.GetInt("Coin", 0);
+
         coinValue += rewardAmount;
         PlayerPrefs.SetInt("Coin", coinValue);
         PlayerPrefs.Save();

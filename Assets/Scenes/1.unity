@@ -335,7 +335,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buyTank: {fileID: 0}
-  tank: 0
   tankNumber: 0
   tank1: {fileID: 0}
   tank2: {fileID: 0}
@@ -2011,6 +2010,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2766734397772951108, guid: f5ada91d220d7d34c8086c16888bc87b, type: 3}
+      propertyPath: m_ScreenMatchMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766734397772951108, guid: f5ada91d220d7d34c8086c16888bc87b, type: 3}
       propertyPath: m_MatchWidthOrHeight
       value: 0
       objectReference: {fileID: 0}
@@ -2163,6 +2166,9 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2766734397772951110, guid: f5ada91d220d7d34c8086c16888bc87b, type: 3}
       insertIndex: 1
+      addedObject: {fileID: 1652850474}
+    - targetCorrespondingSourceObject: {fileID: 2766734397772951110, guid: f5ada91d220d7d34c8086c16888bc87b, type: 3}
+      insertIndex: 2
       addedObject: {fileID: 1652850461}
     - targetCorrespondingSourceObject: {fileID: 2766734397772951110, guid: f5ada91d220d7d34c8086c16888bc87b, type: 3}
       insertIndex: -1
@@ -2619,7 +2625,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buyTank: {fileID: 0}
-  tank: 0
   tankNumber: 0
   tank1: {fileID: 1664649653}
   tank2: {fileID: 962562772}
@@ -2663,6 +2668,18 @@ MonoBehaviour:
   tank1: {fileID: 1652850461}
   butPlay: {fileID: 76723718}
   butAngar: {fileID: 1668574023}
+--- !u!114 &1652850474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1652850455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77703ad24cd61e445b19ed6d90c2f1c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1664649653
 GameObject:
   m_ObjectHideFlags: 0

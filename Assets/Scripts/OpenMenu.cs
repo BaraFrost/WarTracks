@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using YG;
 using PlayerPrefs = RedefineYG.PlayerPrefs;
 
 public class OpenMenu : MonoBehaviour
@@ -75,6 +76,10 @@ public class OpenMenu : MonoBehaviour
     }
     public void OnPlayButtonDown() 
     {
+        if (YG2.isTimerAdvCompleted && !YG2.nowAdsShow)
+        {
+            YG2.InterstitialAdvShow();
+        }
         enLevel = PlayerPrefs.GetInt("EndLevel");
         if(enLevel==1)
         {

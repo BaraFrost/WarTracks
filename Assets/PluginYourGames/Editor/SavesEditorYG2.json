@@ -7,17 +7,19 @@
     "Bomb",
     "DR",
     "Heel",
-    "TankID",
     "SavedLevel",
-    "Coin"
+    "Coin",
+    "EndLevel",
+    "TankID"
   ],
   "intValues": [
     0,
-    4,
-    5,
+    0,
     1,
-    1,
-    16
+    2,
+    20,
+    0,
+    2
   ],
   "intExample": 5,
   "strExample": "Hello!",
@@ -27,5 +29,5 @@
     false,
     false
   ],
-  "idSave": 14984
+  "idSave": 15289
 }

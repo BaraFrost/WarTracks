@@ -17,6 +17,7 @@ public class BuyPlane : MonoBehaviour
 
     void Start()
     {
+        YG2.GameplayStop();
         planeCount = PlayerPrefs.GetInt("Plane");
         coinCounter = PlayerPrefs.GetInt("Coin");
     }

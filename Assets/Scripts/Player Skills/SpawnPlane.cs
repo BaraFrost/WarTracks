@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using YG;
 using PlayerPrefs = RedefineYG.PlayerPrefs;
 
 public class SpawnPlane : MonoBehaviour
@@ -17,6 +18,7 @@ public class SpawnPlane : MonoBehaviour
 
     void Start()
     {
+        YG2.GameplayStart();
         // Загружаем количество объектов
         sTCount = PlayerPrefs.GetInt(itemKey, 0);
 

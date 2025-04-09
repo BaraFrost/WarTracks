@@ -8,8 +8,7 @@ public class ChooseTank : MonoBehaviour
 {
     [SerializeField]
     private BuyTank buyTank;
-    [SerializeField]
-    private int tank;
+    
     public int tankNumber;
     [SerializeField]
     private GameObject tank1;
@@ -117,7 +116,7 @@ public class ChooseTank : MonoBehaviour
     {
         tankNumber = 12;
 
-        if (tank == 12 && buyTank.tank12Bue == 1)
+        if (tankNumber == 12 && buyTank.tank12Bue == 1)
         {
             tank1.SetActive(false);
             tank2.SetActive(false);
@@ -139,7 +138,7 @@ public class ChooseTank : MonoBehaviour
     {
         tankNumber = 22;
 
-        if (tank == 22 && buyTank.tank22Bue == 1)
+        if (tankNumber == 22 && buyTank.tank22Bue == 1)
         {
             tank1.SetActive(false);
             tank2.SetActive(false);
@@ -162,7 +161,7 @@ public class ChooseTank : MonoBehaviour
     {
         tankNumber = 13;
 
-        if (tank == 13 && buyTank.tank13Bue == 1)
+        if (tankNumber == 13 && buyTank.tank13Bue == 1)
         {
             tank1.SetActive(false);
             tank2.SetActive(false);
@@ -184,7 +183,7 @@ public class ChooseTank : MonoBehaviour
     {
         tankNumber = 23;
 
-        if (tank == 23 && buyTank.tank23Bue == 1)
+        if (tankNumber == 23 && buyTank.tank23Bue == 1)
         {
             tank1.SetActive(false);
             tank2.SetActive(false);
@@ -209,7 +208,7 @@ public class ChooseTank : MonoBehaviour
     }
     private void Update()
     {
-        tank = tankNumber;
+       
 
         if (newGame)
         {
